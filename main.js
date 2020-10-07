@@ -28,8 +28,10 @@ client.on('message', message =>{
         client.commands.get('ping').execute(message, args);
     } else if (command === 'pasta'){
         client.commands.get('pasta').execute(message, args);
+    }else if (command === 'candle'){
+        client.commands.get('candle').execute(message, args);
     }
 }
 )
 
-client.login('NzYzMjQ1OTUxNTczNjg4MzUw.X306Lw.XKCoZbMvfEC7C25_yr3gEnOVfvo');
+client.login('NzYzMjQ1OTUxNTczNjg4MzUw.X306Lw.7ZwLDlWtHeDYoFkck1bP1RNXG4M');

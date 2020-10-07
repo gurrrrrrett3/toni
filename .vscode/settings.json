@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/a36a3e6b-9d3f-4127-828b-a503094327e8/resourceGroups/Toni/providers/Microsoft.Web/sites/tonibot",
+    "appService.deploySubpath": "."
+}
