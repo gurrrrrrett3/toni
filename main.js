@@ -25,6 +25,7 @@ client.on('message', message =>{
     console.log('In: ' + message.guild)
     console.log('Channel: ' + message.channel)
     console.log('Content: ' + message.content)
+    console.log('')
    
     if(!message.content.startsWith(prefix) || message.author.bot) return;
  
