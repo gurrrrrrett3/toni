@@ -43,15 +43,15 @@ client.on('message', message =>{
         client.commands.get('candle').execute(message, args);
     }else if (command.includes('wiki')){
         client.commands.get('wiki').execute(message, args);
-    }else if (command.includes('toni')){
+    }else if (command.includes('toni')  || command.includes("tony")){
         client.commands.get('toni').execute(message, args);
-     } else if (command.includes('im') || command.includes("i'm")){
+    } else if (command.includes('im') || command.includes("i'm")){
         client.commands.get('im').execute(message, args);
-
-     }
+    }else if (command.includes('meatball')){
+        client.commands.get('meatball').execute(message, args);
      
+    }
 }
-
 )
 
 client.login('NzYzMjQ1OTUxNTczNjg4MzUw.X306Lw.7ZwLDlWtHeDYoFkck1bP1RNXG4M');
