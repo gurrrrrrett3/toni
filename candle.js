@@ -31,7 +31,7 @@ module.exports = {
             "Waxton Candle"
      ]
         
-        const result = candle[Math.floor(Math.random() * 166)]    
+        const result = candle[Math.floor(Math.random() * 25)]    
         
         
         message.channel.send(result);
