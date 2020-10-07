@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
  
-const prefix = '-'
+const prefix = ''
 const fs = require('fs');
  
 client.commands = new Discord.Collection();
@@ -26,12 +26,15 @@ client.on('message', message =>{
  
     if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
-    } else if (command === 'pasta'){
+    } else if (command.includes('pasta')){
         client.commands.get('pasta').execute(message, args);
-    }else if (command === 'candle'){
+    }else if (command.includes('candle')){
         client.commands.get('candle').execute(message, args);
+    }else if (command.includes('wiki')){
+        client.commands.get('wiki').execute(message, args);
     }
 }
+
 )
 
 client.login('NzYzMjQ1OTUxNTczNjg4MzUw.X306Lw.7ZwLDlWtHeDYoFkck1bP1RNXG4M');
