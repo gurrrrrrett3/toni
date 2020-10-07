@@ -20,7 +20,7 @@ client.once('ready', () => {
  
 client.on('message', message =>{
 
-    console.log('From: ' + message.member.nickname)
+    console.log('From: ' + message.member.displayName)
     console.log('At: ' + message.createdAt)
     console.log('In: ' + message.guild)
     console.log('Channel: ' + message.channel)
