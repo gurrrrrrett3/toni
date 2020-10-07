@@ -20,20 +20,23 @@ client.once('ready', () => {
  
 client.on('message', message =>{
 
+const hornyChance = Math.floor(Math.random() * 1000)
+
+if (hornyChance == 420){
+    message.channel.send("Im horny");
+}
+
+    if(!message.content.startsWith(prefix) || message.author.bot) return;
+
     console.log('From: ' + message.member.displayName)
     console.log('At: ' + message.createdAt)
     console.log('In: ' + message.guild)
     console.log('Channel: ' + message.channel)
     console.log('Content: ' + message.content)
     console.log('')
-   
-    if(!message.content.startsWith(prefix) || message.author.bot) return;
  
-    //
-   // const args = message.content.slice(prefix.length).split(/ +/);
    const args = message.content; 
- //  const command = args.shift().toLowerCase();
-    const command = args.toLowerCase();
+ const command = args.toLowerCase();
 
     if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
