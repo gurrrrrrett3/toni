@@ -19,11 +19,21 @@ client.once('ready', () => {
 });
  
 client.on('message', message =>{
+
+    console.log('From: ' + message.member.nickname)
+    console.log('At: ' + message.createdAt)
+    console.log('In: ' + message.guild)
+    console.log('Channel: ' + message.channel)
+    console.log('Content: ' + message.content)
+   
     if(!message.content.startsWith(prefix) || message.author.bot) return;
  
-    const args = message.content.slice(prefix.length).split(/ +/);
-    const command = args.shift().toLowerCase();
- 
+    //
+   // const args = message.content.slice(prefix.length).split(/ +/);
+   const args = message.content; 
+ //  const command = args.shift().toLowerCase();
+    const command = args.toLowerCase();
+
     if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
     } else if (command.includes('pasta')){
@@ -32,7 +42,13 @@ client.on('message', message =>{
         client.commands.get('candle').execute(message, args);
     }else if (command.includes('wiki')){
         client.commands.get('wiki').execute(message, args);
-    }
+    }else if (command.includes('toni')){
+        client.commands.get('toni').execute(message, args);
+     } else if (command.includes('im') || command.includes("i'm")){
+        client.commands.get('im').execute(message, args);
+
+     }
+     
 }
 
 )
