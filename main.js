@@ -28,13 +28,18 @@ if (hornyChance == 420){
 
     if(!message.content.startsWith(prefix) || message.author.bot) return;
 
-    console.log('From: ' + message.member.displayName)
+    console.log('From: ' + message.member)
     console.log('At: ' + message.createdAt)
-    console.log('In: ' + message.guild)
-    console.log('Channel: ' + message.channel)
+    console.log('In: ' + message.guild.name)
+    console.log('Channel: ' + message.channel.name)
     console.log('Content: ' + message.content)
     console.log('')
  
+    if(message.author.bot){
+        console.log('RESPONSE: ' + message.content)
+        console.log('')
+    }
+
    const args = message.content; 
  const command = args.toLowerCase();
 
