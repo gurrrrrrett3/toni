@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
  
-const prefix = ''
+const prefix = '-'
 const fs = require('fs');
  
 client.commands = new Discord.Collection();
@@ -47,7 +47,7 @@ if (hornyChance == 420){
 
 console.log('From: ' + message.member)
     console.log('At: ' + message.createdAt)
-    console.log('In: ' + message.guild.name)
+   // console.log('In: ' + message.guild.name)
     console.log('Channel: ' + message.channel.name)
     console.log('Content: ' + message.content)
     console.log('')
@@ -72,16 +72,20 @@ console.log('From: ' + message.member)
         client.commands.get('im').execute(message, args);
     }else if (command.includes('meatball')){
         client.commands.get('meatball').execute(message, args);
-     }else if (command.includes('daddy')){
+    }else if (command.includes('daddy')){
         client.commands.get('daddy').execute(message, args);
     }
     
     //prefix commands
 
-    if (!command.startsWith(prefix)) return;
+    if (!command.startsWith(prefix)){ 
+    return
+    } else{
     
     if (command.includes('roll')){
         client.commands.get('roll').execute(message, args);
+
+    }
 
 }
 }

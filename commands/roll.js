@@ -13,18 +13,24 @@ module.exports = {
        
        //next, roll da dice
 
-       const out = Math.floor(Math.random() * (sides)) + 1;
-       
+       var out = Math.floor(Math.random() * (sides)) + 1;
+
+         
+
         //keep out the filthy devils who try to use non numbers
 
-        if(out != Number){
-        message.channel.send("Mamma Mia! That's not a number!")
-        return
-        } 
+        if(Number.isInteger(out)){
+            
+       message.channel.send('Toni is rolling a die with ' + sides + ' sides...');
+        message.channel.send('You rolled a ' + out + '!');
+
+        } else {
         
         //output results
-
-        message.channel.send('Toni is rolling a die with ' + sides + ' sides...');
-        message.channel.send('You rolled a ' + out + '!');
+        message.channel.send("Mamma Mia! That's not a number!")
+        return
+        
+        }
+    
     }
 }
