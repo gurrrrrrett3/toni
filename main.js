@@ -23,7 +23,7 @@ client.on('message', message =>{
 const hornyChance = Math.floor(Math.random() * 1000)
 
 if (hornyChance == 420){
-    message.channel.send("Im horny");
+    message.channel.send("I'm horny motherfucker");
 }
 
     if(!message.content.startsWith(prefix) || message.author.bot) return;
@@ -52,8 +52,11 @@ if (hornyChance == 420){
         client.commands.get('im').execute(message, args);
     }else if (command.includes('meatball')){
         client.commands.get('meatball').execute(message, args);
-     
-    }
+     }else if (command.includes('daddy')){
+        client.commands.get('daddy').execute(message, args);
+    }else if (command.includes('@everyone')){
+        client.commands.get('everyone').execute(message, args);
+}
 }
 )
 
