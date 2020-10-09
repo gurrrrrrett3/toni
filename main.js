@@ -45,6 +45,8 @@ if (hornyChance == 420){
 
     if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
+    }else if (command.includes('@everyone')){
+            client.commands.get('everyone').execute(message, args);
     } else if (command.includes('pasta')){
         client.commands.get('pasta').execute(message, args);
     }else if (command.includes('candle')){
