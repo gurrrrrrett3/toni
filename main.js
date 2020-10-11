@@ -51,6 +51,41 @@ console.log('From: ' + message.member)
     console.log('Channel: ' + message.channel.name)
     console.log('Content: ' + message.content)
     console.log('')
+    //leveling systems
+
+    const usr = message.member
+    const path = './lvldata/'
+
+    //open file, in case it doesn't exist
+
+    fs.open(path + usr, 'w', function (err, file) {
+        if (err) throw err;
+        console.log('File opened!');
+    });    
+
+    //read the file, and store it in the data var
+
+fs.readFile(path + usr, 'utf8' , (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+
+    //Process data
+
+    console.log(data);
+   
+    const updateLvl = data + 1
+
+    //write the new data
+
+    fs.writeFile(path + usr, updateLvl, function (err) {
+        if (err) throw err;
+        console.log('Updated lvl');
+      })
+
+});
+
   //make the messages lowercase, because toni can't read in uppercase
 
    const args = message.content; 
@@ -86,6 +121,7 @@ console.log('From: ' + message.member)
         client.commands.get('roll').execute(message, args);
 
     }
+    
 
 }
 }
