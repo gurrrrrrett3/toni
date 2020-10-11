@@ -28,7 +28,16 @@ module.exports = {
             const tonySpeak = tonyPhrases[Math.floor(Math.random() * (tonyPhrases.length))]    
 
          const mess = message.content;
-          const pos = mess.indexOf('im') + 3;
+
+            // Check type of "I'm", Either "im" or "i'm"
+
+            if(mess.includes('im')){
+                var count = 3
+            } else if(mess.includes("i'm")){
+                var count = 5
+                }else return;
+
+          const pos = mess.indexOf('im') + count;
           const out = 'Hi, ' + mess.substring(pos,mess.length) + tonySpeak;
          message.channel.send(out);
       //  }
