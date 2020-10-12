@@ -2,8 +2,8 @@ module.exports = {
     name: 'im',
     description: "this is a response command!",
     execute(message, args){
-   //var rand = Math.floor(Math.random() * 3)
-       // if (rand == 2){
+   var rand = Math.floor(Math.random() * 10)
+        if (rand == 2){
 
             const tonyPhrases = [ 
                 ", I'ma Toni!",
@@ -31,9 +31,9 @@ module.exports = {
           const pos = mess.indexOf('im') + 3;
           const out = 'Hi, ' + mess.substring(pos,mess.length) + tonySpeak;
          message.channel.send(out);
-      //  }
-       // else 
+        }
+        else 
         
-     //   return;
+        return;
     }
 }
