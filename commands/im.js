@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'im ',
+    name: 'im',
     description: "this is a response command!",
     execute(message, args){
    var rand = Math.floor(Math.random() * 10)
