@@ -71,6 +71,7 @@ fs.readFile(path + usr, 'utf8' , (err, data) => {
       return;
     }
 
+
     //Process data
 
     console.log(data);
@@ -79,12 +80,13 @@ fs.readFile(path + usr, 'utf8' , (err, data) => {
 
     //write the new data
 
-    fs.writeFile(path + usr, updateLvl, function (err) {
+    fs.appendFile(path + usr, '#', (err) => {
         if (err) throw err;
-        console.log('Updated lvl');
-      })
 
+    
 });
+
+})
 
   //make the messages lowercase, because toni can't read in uppercase
 

@@ -36,7 +36,7 @@ module.exports = {
 
          const mess = message.content;
 
-            // Check type of "I'm", Either "im" or "i'm"
+            // Check type of "I'm", Either "im" or "i'm" 
 
             if(mess.includes('im')){
                 var count = 3
