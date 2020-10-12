@@ -1,132 +1,148 @@
 const Discord = require('discord.js');
+const random = require('random');
+const jsonfile = require('jsonfile');
 const client = new Discord.Client();
- 
+
 const prefix = '-'
 const fs = require('fs');
- 
+
 client.commands = new Discord.Collection();
- 
+
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
-for(const file of commandFiles){
+for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
- 
+
     client.commands.set(command.name, command);
 }
- 
- 
+
+
 client.once('ready', () => {
     console.log('Toni is online!');
 });
 
+//level init
 
- //end init
+var stats = {};
+if (fs.existsSync('stats.json')){
+    stats = jsonfile.readFileSync('stats.json');
+
+}
+
+
+//end init
 //----------------------------------------
 //when toni sees, he reads
 
-client.on('message', message =>{
+client.on('message', message => {
 
-//toni is a horny motherfucker
+    //toni is a horny motherfucker
 
-const hornyChance = Math.floor(Math.random() * 1000)
+    const hornyChance = Math.floor(Math.random() * 1000)
 
-if (hornyChance == 420){
-    message.channel.send("I'm horny motherfucker");
-}
-//log toni's own messages, toni never forgets
+    if (hornyChance == 420) {
+        message.channel.send("I'm horny motherfucker");
+    }
+    //log toni's own messages, toni never forgets
 
-    if(message.author.bot){
+    if (message.author.bot) {
         console.log('RESPONSE: ' + message.content)
         console.log('')
     }
 
     //don't respond to bots, they are spies
 
-    if(message.author.bot) return;
+    if (message.author.bot) return;
 
     //log messages, because toni is a creep
 
-console.log('From: ' + message.member)
+    console.log('From: ' + message.member)
     console.log('At: ' + message.createdAt)
-   // console.log('In: ' + message.guild.name)
+        // console.log('In: ' + message.guild.name)
     console.log('Channel: ' + message.channel.name)
     console.log('Content: ' + message.content)
     console.log('')
-    //leveling systems
+        //leveling systems
 
-    const usr = message.member
-    const path = './lvldata/'
+        if (message.guild.id in stats === false) {
+            stats[message.guild.id] = {};
+        } 
 
-    //open file, in case it doesn't exist
+        const guildStats = stats[message.guild.id];
+        if(message.author.id in guildStats === false) {
+            guildStats[message.author.id] = {
+                xp: 0,
+                level: 0,
+                last_message: 0
+            }
+        }
+        
+        const userStats = guildStats[message.author.id];
+        if(Date.now() - userStats.last_message >= 60000){
+        userStats.xp += random.int(15,25);
+        userStats.last_message = Date.now();
 
-    fs.open(path + usr, 'w', function (err, file) {
-        if (err) throw err;
-        console.log('File opened!');
-    });    
 
-    //read the file, and store it in the data var
+       
+        const xpToNextLevel = 5* Math.pow(userStats.level, 2) + 50 * userStats.level + 100;
+        if(userStats.xp >= xpToNextLevel) {
+            userStats.level++;
+            userStats.xp = userStats.xp - xpToNextLevel;
+            message.channel.send(message.author.username + ' has reached level ' + userStats.level);
 
-fs.readFile(path + usr, 'utf8' , (err, data) => {
-    if (err) {
-      console.error(err);
-      return;
+        }
+        
+        jsonfile.writeFileSync('stats.json', stats);
+
+        console.log('LVL SYSTEM:')
+        console.log(message.author.username + ' now has ' + userStats.xp + ' xp') 
+        console.log(xpToNextLevel + ' XP needed for next level')
+        console.log("It's been " + (Date.now() - userStats.last_message)/1000  + " Seconds since last message")
+        console.log('')
+
     }
 
 
-    //Process data
 
-    console.log(data);
-   
-    const updateLvl = data + 1
 
-    //write the new data
+         
+    //make the messages lowercase, because toni can't read in uppercase
 
-    fs.appendFile(path + usr, '#', (err) => {
-        if (err) throw err;
+    const args = message.content;
+    const command = args.toLowerCase();
 
-    
-});
-
-})
-
-  //make the messages lowercase, because toni can't read in uppercase
-
-   const args = message.content; 
- const command = args.toLowerCase();
-
-    if(command === 'ping'){
+    if (command === 'ping') {
         client.commands.get('ping').execute(message, args);
-    }else if (command.includes('@everyone')){
-            client.commands.get('everyone').execute(message, args);
-    } else if (command.includes('pasta')){
+    } else if (command.includes('@everyone')) {
+        client.commands.get('everyone').execute(message, args);
+    } else if (command.includes('pasta')) {
         client.commands.get('pasta').execute(message, args);
-    }else if (command.includes('candle')){
+    } else if (command.includes('candle')) {
         client.commands.get('candle').execute(message, args);
-    }else if (command.includes('wiki')){
+    } else if (command.includes('wiki')) {
         client.commands.get('wiki').execute(message, args);
-    }else if (command.includes('toni')  || command.includes("tony")){
+    } else if (command.includes('toni') || command.includes("tony")) {
         client.commands.get('toni').execute(message, args);
-    } else if (command.includes('im') || command.includes("i'm")){
+    } else if (command.includes('im') || command.includes("i'm")) {
         client.commands.get('im').execute(message, args);
-    }else if (command.includes('meatball')){
+    } else if (command.includes('meatball')) {
         client.commands.get('meatball').execute(message, args);
-    }else if (command.includes('daddy')){
+    } else if (command.includes('daddy')) {
         client.commands.get('daddy').execute(message, args);
     }
-    
+
     //prefix commands
 
-    if (!command.startsWith(prefix)){ 
-    return
-    } else{
-    
-    if (command.includes('roll')){
-        client.commands.get('roll').execute(message, args);
+    if (!command.startsWith(prefix)) {
+        return
+    } else {
+
+        if (command.includes('roll')) {
+            client.commands.get('roll').execute(message, args);
+
+        }
+
 
     }
-    
-
-}
-}
-)
+})
 
 client.login('NzYzMjQ1OTUxNTczNjg4MzUw.X306Lw.7ZwLDlWtHeDYoFkck1bP1RNXG4M');
