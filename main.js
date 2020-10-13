@@ -49,10 +49,7 @@ client.on('message', message => {
         console.log('')
     }
 
-    //don't respond to bots, they are spies
-
-    if (message.author.bot) return;
-
+    
     //log messages, because toni is a creep
 
     console.log('From: ' + message.member)
@@ -63,23 +60,43 @@ client.on('message', message => {
     console.log('')
         //leveling systems
 
-        if (message.guild.id in stats === false) {
-            stats[message.guild.id] = {};
-        } 
+        //if (message.guild.id in stats === false) {
+      //      stats[message.guild.id] = {};
+      //  } 
 
         const guildStats = stats[message.guild.id];
-        if(message.author.id in guildStats === false) {
-            guildStats[message.author.id] = {
+        if(message.author.id in stats === false) {
+            stats[message.author.id] = {
                 xp: 0,
                 level: 0,
                 last_message: 0
+                
             }
         }
         
-        const userStats = guildStats[message.author.id];
+        const userStats = stats[message.author.id];
         if(Date.now() - userStats.last_message >= 60000){
         userStats.xp += random.int(15,25);
         userStats.last_message = Date.now();
+        message.react('🔼')
+        
+        const filter = (reaction, user) => {
+            return ['🔼'].includes(reaction.emoji.name) && user.id === message.author.id;
+        };
+
+        message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+        .then(collected => {
+            const reaction = collected.first();
+    
+            if (reaction.emoji.name === '🔼') {
+            message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error));
+            }
+
+             })
+             .catch(collected => {
+                message.react('750838083762782308');
+            });
+        
 
 
        
@@ -102,8 +119,16 @@ client.on('message', message => {
     }
 
 
+   
 
 
+
+    //end lvl system   
+    //start command system
+
+    //don't respond to bots, they are spies
+
+    if (message.author.bot) return;
          
     //make the messages lowercase, because toni can't read in uppercase
 
@@ -138,11 +163,15 @@ client.on('message', message => {
 
         if (command.includes('roll')) {
             client.commands.get('roll').execute(message, args);
-
+        } else if (command.includes('botlvl')) {
+            client.commands.get('botlvl').execute(message, args);
+        }else if (command.includes('lvl')) {
+            client.commands.get('lvl').execute(message, args);
         }
 
-
     }
-})
+});
+
+
 
 client.login('NzYzMjQ1OTUxNTczNjg4MzUw.X306Lw.7ZwLDlWtHeDYoFkck1bP1RNXG4M');

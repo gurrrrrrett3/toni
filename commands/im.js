@@ -2,7 +2,7 @@ module.exports = {
     name: 'im',
     description: "this is a response command!",
     execute(message, args){
-   var rand = Math.floor(Math.random() * 10)
+   var rand = Math.floor(Math.random() * 5)
         if (rand == 2){
 
             const tonyPhrases = [ 
