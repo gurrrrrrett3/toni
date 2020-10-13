@@ -84,17 +84,23 @@ client.on('message', message => {
         if(Date.now() - userStats.last_message >= 60000){
         userStats.xp += random.int(15,25);
         userStats.last_message = Date.now();
-        message.react('🔼')
+        message.react('💰')
         
         const filter = (reaction, user) => {
-            return ['🔼'].includes(reaction.emoji.name) && user.id === message.author.id;
+            return ['💰'].includes(reaction.emoji.name);
         };
 
         message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
         .then(collected => {
             const reaction = collected.first();
     
-            if (reaction.emoji.name === '🔼') {
+            if (reaction.emoji.name === '💰') {
+                const user = reaction.author.id
+                const username = reaction.author.name
+                const amount =  random.int(10,50);
+                stats.user.xp += amount
+                message.channel.send(username + " Opened the goodie bag and got " + amount + " xp!")
+
             message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error));
             }
 
