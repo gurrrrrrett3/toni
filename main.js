@@ -36,9 +36,9 @@ if (fs.existsSync('stats.json')){
 client.on('message', message => {
 
     //NO DMING TONI 
-    if (message.guild.id = null) return;
+    if (message.guild.id === null)  return;
 
-    
+
     //toni is a horny motherfucker
 
     const hornyChance = Math.floor(Math
