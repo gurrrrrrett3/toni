@@ -36,7 +36,7 @@ if (fs.existsSync('stats.json')){
 client.on('message', message => {
 
     //NO DMING TONI 
-    if (message.guild.id === null)  return;
+    if (message.channel.type == 'dm' || message.channel.type == 'news') return;
 
 
     //toni is a horny motherfucker
