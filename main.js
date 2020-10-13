@@ -35,9 +35,15 @@ if (fs.existsSync('stats.json')){
 
 client.on('message', message => {
 
+    //NO DMING TONI 
+    if (message.guild.id = null) return;
+
+    
     //toni is a horny motherfucker
 
-    const hornyChance = Math.floor(Math.random() * 1000)
+    const hornyChance = Math.floor(Math
+        
+        .random() * 1000)
 
     if (hornyChance == 420) {
         message.channel.send("I'm horny motherfucker");
