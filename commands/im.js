@@ -38,10 +38,10 @@ module.exports = {
 
             // Check type of "I'm", Either "im" or "i'm" 
 
-            if(mess.includes('im')){
-                var count = 3
-            } else if(mess.includes("i'm")){
-                var count = 5
+            if(mess.includes(' im ')){
+                var count = 4
+            } else if(mess.includes(" i'm ")){
+                var count = 6
                 }else return;
 
           const pos = mess.indexOf('im') + count;
