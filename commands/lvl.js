@@ -8,9 +8,16 @@ module.exports = {
        if (fs.existsSync('stats.json')) {
         stats = jsonfile.readFileSync('stats.json');
 
-        const userStats = stats[message.author.id];
+        if (message.mentions.members.first()) {
+            var user = message.mentions.users.first().id
+           // if (!Object.values(stats).includes(user)) return;
+        } else {
+            var user = message.author.id;
+        }
+            
+        const userStats = stats[user]
         const xpToNextLevel = (5* Math.pow(userStats.level, 2) + 50 * userStats.level + 100) - userStats.xp;
-        const out = "```" + message.author.username.toUpperCase() + "'S STATS \nLevel: "+ userStats.level + "\nxp: " + userStats.xp + "\nYou need "+ xpToNextLevel + " more xp points to level up!```"
+        const out = "```" + userStats.name.toUpperCase() + "'S STATS \nLevel: "+ userStats.level + "\nxp: " + userStats.xp + "\nYou need "+ xpToNextLevel + " more xp points to level up!```"
     
         message.channel.send(out)
         }

@@ -71,6 +71,8 @@
             const guildStats = stats[message.guild.id];
             if(message.author.id in stats === false) {
                 stats[message.author.id] = {
+                    name: message.author.username,
+                    id: message.author.id,
                     xp: 0,
                     level: 0,
                     last_message: 0
@@ -82,26 +84,66 @@
             if(Date.now() - userStats.last_message >= 60000){
             userStats.xp += random.int(15,25);
             userStats.last_message = Date.now();
-            message.react('🔼')
             
+            message.react('⏺️')
+
+            
+
+
             const filter = (reaction, user) => {
-                return ['🔼'].includes(reaction.emoji.name) && user.id === message.author.id;
+                return ['⏺️'].includes(reaction.emoji.name) && user.id === message.author.id;
             };
+
+            
     
-            message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+            message.awaitReactions(filter, { max: 1, time: 10000, errors: ['time'] })
             .then(collected => {
                 const reaction = collected.first();
         
-                if (reaction.emoji.name === '🔼') {
+                if (reaction.emoji.name === '⏺️') {
                 message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error));
+                const amount = ((10 - (Math.ceil((Date.now() - userStats.last_message) / 1000))) * 2) + 2
+                
+                numbers = [
+                "0️⃣","1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣"
+                ]
+
+                if (amount == 2) message.react(numbers[0]) .then(() => message.react(numbers[2]));
+                if (amount == 4) message.react(numbers[0]) .then(() => message.react(numbers[4]));
+                if (amount == 6) message.react(numbers[0]) .then(() => message.react(numbers[6]));
+                if (amount == 8) message.react(numbers[0]) .then(() => message.react(numbers[8]));
+                if (amount == 10) message.react(numbers[1]) .then(() => message.react(numbers[0]));
+                if (amount == 12) message.react(numbers[1]) .then(() => message.react(numbers[2]));
+                if (amount == 14) message.react(numbers[1]) .then(() => message.react(numbers[4]));
+                if (amount == 16) message.react(numbers[1]) .then(() => message.react(numbers[6]));
+                if (amount == 18) message.react(numbers[1]) .then(() => message.react(numbers[8]));
+                if (amount == 20) message.react(numbers[2]) .then(() => message.react(numbers[0]));
+
+                console.log(amount)
+                userStats.xp += amount
+
+                //numbers go away
+
+                
+            
+
                 }
     
                  })
                  .catch(collected => {
-                    message.react('750838083762782308');
+                    
+                    message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error));
                 });
             
-    
+                const filter2 = (reaction, user) => {
+                    return [numbers].includes(reaction.emoji.name) && user.id === message.author.id;
+                };
+                
+                message.awaitReactions(filter2, { max: 1, time: 10000, errors: ['time'] })
+
+                .catch(collected => {
+                    message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error));;
+                });
     
            
             const xpToNextLevel = 5* Math.pow(userStats.level, 2) + 50 * userStats.level + 100;
@@ -171,8 +213,9 @@
                 client.commands.get('botlvl').execute(message, args);
             }else if (command.includes('lvl')) {
                 client.commands.get('lvl').execute(message, args);
+            }else if (command.includes('top')) {
+                client.commands.get('top').execute(message, args);
             }
-    
         }
     });
     
