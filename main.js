@@ -18,7 +18,19 @@
     
     client.once('ready', () => {
         console.log('Toni is online!');
+    
+ //   const status = [
+ //       "Momma Mia!",
+ //       "Ciao, sono Toni!",
+ //      "#1 Obscure Italian Discord bot!"
+ //   ]
+    
+    //const randomStatus = status[random.int(0,status.length)]
+    //client.user.setStatus('online', randomStatus)
+
     });
+    
+    
     
     //level init
     
@@ -27,7 +39,16 @@
         stats = jsonfile.readFileSync('stats.json');
     
     }
+
+    var speedStats = {};
+    if (fs.existsSync('speedstats.json')){
+        speedStats = jsonfile.readFileSync('speedstats.json');
     
+    }
+    
+    
+    //check ping
+    //ugggh reaction collectors
     
     //end init
     //----------------------------------------
@@ -67,8 +88,7 @@
             //if (message.guild.id in stats === false) {
           //      stats[message.guild.id] = {};
           //  } 
-    
-            const guildStats = stats[message.guild.id];
+          const guildStats = stats[message.guild.id];
             if(message.author.id in stats === false) {
                 stats[message.author.id] = {
                     name: message.author.username,
@@ -80,12 +100,27 @@
                 }
             }
             
+            if(message.author.id in speedStats === false) {
+                speedStats[message.author.id] = {
+                    name: message.author.username,
+                    id: message.author.id,
+                    total_times: 0,
+                    total_score: 0,
+                    average: 0
+                    
+                }
+            }
+
             const userStats = stats[message.author.id];
             if(Date.now() - userStats.last_message >= 60000){
             userStats.xp += random.int(15,25);
             userStats.last_message = Date.now();
             
+            const userSpeedStats = speedStats[message.author.id]
+
             message.react('⏺️')
+            
+
 
             
 
@@ -102,31 +137,25 @@
         
                 if (reaction.emoji.name === '⏺️') {
                 message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error));
-                const amount = ((10 - (Math.ceil((Date.now() - userStats.last_message) / 1000))) * 2) + 2
+                const amount = (100 - (Math.ceil((Date.now() - userStats.last_message) / 100)))
                 
-                numbers = [
-                "0️⃣","1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣"
+                var numbers = [
+                "0️⃣","1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣", "766341411887906826", "766341411728654368", "766341412052533279", "766341411791962173", "766341411930767411", "766341411884367914", "766341411897344000", "766341411900751912", "766341411598893078", "766341411762733057"
                 ]
 
-                if (amount == 2) message.react(numbers[0]) .then(() => message.react(numbers[2]));
-                if (amount == 4) message.react(numbers[0]) .then(() => message.react(numbers[4]));
-                if (amount == 6) message.react(numbers[0]) .then(() => message.react(numbers[6]));
-                if (amount == 8) message.react(numbers[0]) .then(() => message.react(numbers[8]));
-                if (amount == 10) message.react(numbers[1]) .then(() => message.react(numbers[0]));
-                if (amount == 12) message.react(numbers[1]) .then(() => message.react(numbers[2]));
-                if (amount == 14) message.react(numbers[1]) .then(() => message.react(numbers[4]));
-                if (amount == 16) message.react(numbers[1]) .then(() => message.react(numbers[6]));
-                if (amount == 18) message.react(numbers[1]) .then(() => message.react(numbers[8]));
-                if (amount == 20) message.react(numbers[2]) .then(() => message.react(numbers[0]));
+                const tens = Math.floor(amount / 10)
+                const ones = amount % 10
+
+                message.react(numbers[tens]) .then(() => message.react(numbers[ones + 10])).catch(error => console.error('Reaction error', error));
 
                 console.log(amount)
-                userStats.xp += amount
+                userStats.xp = userStats.xp + amount
+                userSpeedStats.total_times ++
+                userSpeedStats.total_score = userSpeedStats.total_score + amount
 
                 //numbers go away
 
                 
-            
-
                 }
     
                  })
@@ -134,6 +163,10 @@
                     
                     message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error));
                 });
+
+                var numbers = [
+                    "0️⃣","1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣", "766341411887906826", "766341411728654368", "766341412052533279", "766341411791962173", "766341411930767411", "766341411884367914", "766341411897344000", "766341411900751912", "766341411598893078", "766341411762733057"
+                    ]
             
                 const filter2 = (reaction, user) => {
                     return [numbers].includes(reaction.emoji.name) && user.id === message.author.id;
@@ -161,8 +194,17 @@
             console.log(xpToNextLevel + ' XP needed for next level')
             console.log("It's been " + (Date.now() - userStats.last_message)/1000  + " Seconds since last message")
             console.log('')
-    
-        }
+            
+            userSpeedStats.average = 100 - (userStats.total_score / userStats.total_times);
+
+            jsonfile.writeFileSync('speedstats.json', speedStats)
+
+            console.log(message.author.username + " now has " + userSpeedStats.total_score + " after reacting to " + userSpeedStats.total_times + " challenges")
+            
+        } 
+
+
+        
     
     
        
@@ -213,12 +255,16 @@
                 client.commands.get('botlvl').execute(message, args);
             }else if (command.includes('lvl')) {
                 client.commands.get('lvl').execute(message, args);
+            }else if (command.includes('speedtop')) {
+                client.commands.get('speedtop').execute(message, args);
             }else if (command.includes('top')) {
                 client.commands.get('top').execute(message, args);
+            }else if (command.includes('speed')) {
+                client.commands.get('speed').execute(message, args);
             }
         }
     });
     
-    
+
     
     client.login('NzYzMjQ1OTUxNTczNjg4MzUw.X306Lw.7ZwLDlWtHeDYoFkck1bP1RNXG4M');
