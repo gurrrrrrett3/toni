@@ -12,7 +12,7 @@ module.exports = {
        
         var speedArray = Object.values(speed)
        
-        speedArray.sort(function(a, b){return (a.total_score / a.total_times) - (b.total_score / total_times)});
+        speedArray.sort(function(a, b){return (a.total_score / a.total_times) - (b.total_score / b.total_times)});
         speedArray.reverse()
 
         //output 
