@@ -77,7 +77,7 @@
         
         //log messages, because toni is a creep
     
-        console.log('From: ' + message.member)
+        console.log('From: ' + message.author.username)
         console.log('At: ' + message.createdAt)
             // console.log('In: ' + message.guild.name)
         console.log('Channel: ' + message.channel.name)
