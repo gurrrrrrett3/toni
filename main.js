@@ -46,6 +46,12 @@ if (fs.existsSync('speedstats.json')){
 
 }
 
+var words = {};
+if (fs.existsSync('words.json')){
+    words = jsonfile.readFileSync('words.json');
+
+}
+
 
 //check ping
 //ugggh reaction collectors
@@ -59,6 +65,31 @@ client.on('message', message => {
 
     //NO DMING TONI 
 if (message.channel.type == 'dm' || message.channel.type == 'news') return;
+
+    //list of channel IDs to run the word game in
+
+    const wordChannels = [
+        "766737470842208287"
+    ]
+
+    //characters toni wants in his words 
+
+    const leagalCharacters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "'", "-", "\n", '"', ","]
+
+    //if the message is in one of the specified word channels, intercept it, even if it's a command.
+
+        if (wordChannels.includes(message.channel.id)) {
+            const text = message.content.toLowerCase()
+
+            for (var i = 0 ; i <= text.length; i ++) {
+                if (leagalCharacters.includes(text.charAt(i)) == false){
+                   message.delete()
+                    return 
+                }
+                console.log(i + " " + text.charAt(i))
+            }
+            return
+        }
 
     //toni is a horny motherfucker
 
