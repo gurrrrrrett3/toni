@@ -14,12 +14,13 @@ module.exports = {
         } else {
             var user = message.author.id;
         }
-            
-        const userStats = stats[user]
-        const average = 100 - (userStats.total_score / userStats.total_times);
-        const out = "```" + userStats.name.toUpperCase() + "'S SPEED STATS \nTotal Reactions: "+ userStats.total_times + "\nTotal Score: " + userStats.total_score + "\nAverage Speed " + average * 10 + "ms```"
         
-        userStats.average = average
+        const userStats = stats[user]
+        const toni = stats['763245951573688350']
+        const average = (toni.total_score / toni.total_times) - (100 - (userStats.total_score / userStats.total_times));
+        const out = "```" + userStats.name.toUpperCase() + "'S SPEED STATS \nTotal Reacions: "+ userStats.total_times + "\nTotal Score: " + userStats.total_score + "\nAverage Speed " + average * 10 + "ms```"
+        
+        userStats.average = average;
         message.channel.send(out)
         }
     }
