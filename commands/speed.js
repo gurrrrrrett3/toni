@@ -16,7 +16,7 @@ module.exports = {
         }
         
         const userStats = stats[user]
-        const average =(100 - (userStats.total_score / userStats.total_times));
+        const average =(userStats.total_score / userStats.total_times);
         const out = "```" + userStats.name.toUpperCase() + "'S SPEED STATS \nTotal Reacions: "+ userStats.total_times + "\nTotal Score: " + userStats.total_score + "\nAverage Speed " + average * 10 + "ms```"
         
         userStats.average = average;
