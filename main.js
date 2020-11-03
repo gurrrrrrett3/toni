@@ -292,7 +292,9 @@ if (message.channel.type == 'dm' || message.channel.type == 'news') return;
             client.commands.get('top').execute(message, args);
         }else if (command.includes('speed')) {
             client.commands.get('speed').execute(message, args);
-        }
+        }//else if (command.includes('animal')) {
+           // client.commands.get('animal').execute(message, args);
+        //}  ANIMAL DISABLED
     }
 });
 
