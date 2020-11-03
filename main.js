@@ -226,7 +226,7 @@ if (message.channel.type == 'dm' || message.channel.type == 'news') return;
         console.log("It's been " + (Date.now() - userStats.last_message)/1000  + " Seconds since last message")
         console.log('')
         
-        userSpeedStats.average =(100 - (userStats.total_score / userStats.total_times));
+        userSpeedStats.average =(userStats.total_score / userStats.total_times);
 
         jsonfile.writeFileSync('speedstats.json', speedStats)
 
@@ -292,7 +292,9 @@ if (message.channel.type == 'dm' || message.channel.type == 'news') return;
             client.commands.get('top').execute(message, args);
         }else if (command.includes('speed')) {
             client.commands.get('speed').execute(message, args);
-        }
+        }//else if (command.includes('animal')) {
+           // client.commands.get('animal').execute(message, args);
+        //}  ANIMAL DISABLED
     }
 });
 
