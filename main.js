@@ -226,8 +226,7 @@ if (message.channel.type == 'dm' || message.channel.type == 'news') return;
         console.log("It's been " + (Date.now() - userStats.last_message)/1000  + " Seconds since last message")
         console.log('')
         
-        const toni = speedStats['763245951573688350']
-        userSpeedStats.average = (toni.total_score / toni.total_times) - (100 - (userSpeedStats.total_score / userSpeedStats.total_times));
+        userSpeedStats.average =(100 - (userStats.total_score / userStats.total_times));
 
         jsonfile.writeFileSync('speedstats.json', speedStats)
 
