@@ -3,6 +3,7 @@ module.exports = {
     description: "this is a ping command!",
     execute(message, args){
        
-        message.channel.send('pong!');
+        var ping = Date.now() - message.createdTimestamp + " ms";
+        message.channel.send("Pong! `" + `${(Math.abs(Date.now() - message.createdTimestamp))/ 100}` + " ms`");
     }
-    }
+}
