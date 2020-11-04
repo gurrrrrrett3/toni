@@ -22,7 +22,7 @@ module.exports = {
         })
 
         speedArray.sort(function(a, b){return (a.average) - (b.average)});
-       // speedArray.reverse()
+        speedArray.reverse()
 
         //output 
         if (speedArray.length < 10) {
