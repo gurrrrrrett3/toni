@@ -274,7 +274,10 @@ if (message.channel.type == 'dm' || message.channel.type == 'news') return;
         client.commands.get('meatball').execute(message, args);
     } else if (command.includes('daddy')) {
         client.commands.get('daddy').execute(message, args);
+    }else if (command.includes('golf')) {
+        client.commands.get('golf').execute(message, args);
     }
+    
 
     //prefix commands
 
