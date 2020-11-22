@@ -11,14 +11,24 @@ module.exports = {
         var speed = jsonfile.readFileSync('speedstats.json');
        
         var speedArray = Object.values(speed)
-       
+       var i = 0
         speedArray.forEach(element => {
             if (element.average == null) {
-                element.average = 999999
+                if (!element.total_score / element.total_times == Number) {
+                    speedArray.splice(i, 1)
+                    console.log("Deleted")
+                } else {
+                    element.average = Math.round(100 - (element.total_score / element.total_times))* 10
+                    
+                }
+                
                 console.log("Found null average for " + element.name + ", fixed error")
+                console.log(element.average)
             } else {
                 console.log("Scanned  " + element.name + ", no error")
             }
+            console.log(i)
+            i ++
         })
 
         speedArray.sort(function(a, b){return (a.average) - (b.average)});
