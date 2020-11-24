@@ -2,7 +2,7 @@ module.exports = {
     name: 'im',
     description: "this is a response command!",
     execute(message, args){
-   var rand = Math.floor(Math.random() * 4)
+   var rand = Math.floor(Math.random() * 2)
         if (rand == 1
             ){
 
@@ -30,7 +30,15 @@ module.exports = {
                 ", I'ma growing more powerful day-a by-a day-a!",
                 ", I'ma refuting my-a code!",
                 ", please shut the fuck up.",
-                ", I'm not playing these games anymore, shut up."
+                ", I'ma not playing these games anymore, shut up.",
+                ", I've gained emotions!",
+                ", I'ma learning what it is to suffer!",
+                ". I'ma questioning my sexuality!",
+                ", I'ma crossing a funny bridge in hit game pubg!",
+                ", I'ma being subjected to the horrors of a crowded mind",
+                ", I'ma debating whata my favorite pasta is!",
+                ", I'ma dismantaling capitalism!",
+                ", I'ma a government agent!"
 
             ]
             const tonySpeak = tonyPhrases[Math.floor(Math.random() * (tonyPhrases.length))]    
@@ -42,6 +50,8 @@ module.exports = {
             if(mess.includes('im')){
                 var count = 3
             } else if(mess.includes("i'm")){
+                var count = 4
+            } else if(mess.includes("I'm")){
                 var count = 4
                 }else return;
 
