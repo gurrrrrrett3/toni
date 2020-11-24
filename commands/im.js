@@ -2,8 +2,9 @@ module.exports = {
     name: 'im',
     description: "this is a response command!",
     execute(message, args){
-   var rand = Math.floor(Math.random() * 10)
-        if (rand == 2){
+   var rand = Math.floor(Math.random() * 4)
+        if (rand == 1
+            ){
 
             const tonyPhrases = [ 
                 ", I'ma Toni!",
@@ -38,10 +39,10 @@ module.exports = {
 
             // Check type of "I'm", Either "im" or "i'm" 
 
-            if(mess.includes(' im ')){
+            if(mess.includes('im')){
+                var count = 3
+            } else if(mess.includes("i'm")){
                 var count = 4
-            } else if(mess.includes(" i'm ")){
-                var count = 6
                 }else return;
 
           const pos = mess.indexOf('im') + count;
