@@ -12,6 +12,8 @@
     "discord.js": "^12.4.1",
     "json-keys-sort": "^2.0.0",
     "jsonfile": "^6.1.0",
+    "lodash": "^4.17.21",
+    "lowdb": "^1.0.0",
     "random": "^2.2.0"
   }
 }

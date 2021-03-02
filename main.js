@@ -1,7 +1,8 @@
  const Discord = require('discord.js');
     const random = require('random');
-    const jsonfile = require('jsonfile');
     const client = new Discord.Client();
+    const low = require('lowdb')
+    const FileAsync = require('lowdb/adapters/FileAsync')
     
     const prefix = '-'
     const fs = require('fs');
@@ -33,23 +34,6 @@
     
     
     //JSON init
-    
-    var stats = {};
-    if (fs.existsSync('stats.json')){
-        stats = jsonfile.readFileSync('stats.json');
-    
-    }
-
-    var speedStats = {};
-    if (fs.existsSync('speedstats.json')){
-        speedStats = jsonfile.readFileSync('speedstats.json');
-    
-    }
-
-
-    
-
-
     
     //check ping
     //ugggh reaction collectors
@@ -88,9 +72,11 @@
         if (!command.startsWith(prefix)) {
             return
         } else {
-    
+            //COMMANDS 
             if (command.includes('roll')) {
                 client.commands.get('roll').execute(message, args);
+            } if (command.includes('recipe')) {
+                client.commands.get('recipe').execute(message, args);
             }
         }
     });
