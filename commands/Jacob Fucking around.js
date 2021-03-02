@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'Recipe',
+    name: 'recipe',
     description: "Pasta",
     execute(message, args){
         message.channel.send('Just maka da pastaa');

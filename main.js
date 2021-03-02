@@ -64,11 +64,18 @@
         if (message.author.bot) {
             console.log('RESPONSE: ' + message.content)
             console.log('')
+            return
         }
     
-    
+        const args = message.content;
+        const command = args.toLowerCase();
         //prefix commands
-    
+        if(command.includes('toni')) {
+            message.channel.send("Ciao, sono Toni!")
+        }
+
+
+
         if (!command.startsWith(prefix)) {
             return
         } else {
@@ -83,4 +90,4 @@
     
 
     
-    client.login('NzYzMjQ1OTUxNTczNjg4MzUw.X306Lw.7ZwLDlWtHeDYoFkck1bP1RNXG4M');
+    client.login('NzYzMjQ1OTUxNTczNjg4MzUw.X306Lw.l-gywr0VUvSLRRKTaZNSK4mhddA');
