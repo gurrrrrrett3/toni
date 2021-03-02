@@ -161,7 +161,7 @@
                 userSpeedStats.total_times ++
                 userSpeedStats.total_score = userSpeedStats.total_score + amount
 
-                //numbers go away
+                
 
                 
                 }
