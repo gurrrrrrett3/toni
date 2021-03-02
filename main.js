@@ -72,6 +72,12 @@
         //prefix commands
         if(command.includes('toni')) {
             message.channel.send("Ciao, sono Toni!")
+        } else if (command.includes('pasta')) {
+            client.commands.get('pasta').execute(message, args)
+        } else if (command.includes('roll')) {
+            client.commands.get('roll').execute(message, args);
+        } else if (command.includes('recipe')) {
+            client.commands.get('recipe').execute(message, args);
         }
 
 
@@ -80,11 +86,7 @@
             return
         } else {
             //COMMANDS 
-            if (command.includes('roll')) {
-                client.commands.get('roll').execute(message, args);
-            } if (command.includes('recipe')) {
-                client.commands.get('recipe').execute(message, args);
-            }
+            
         }
     });
     
