@@ -1,5 +1,5 @@
 module.exports = {
-    name: '@Toni',
+    name: 'mention',
     description: "Toni doesnt like getting pinged",
     execute(message, args){
         message.channel.send('Who dafuqa pinga me');

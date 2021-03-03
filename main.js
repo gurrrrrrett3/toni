@@ -66,7 +66,9 @@
             console.log('')
             return
         }
-    
+        
+
+
         const args = message.content;
         const command = args.toLowerCase();
         //prefix commands
@@ -78,8 +80,8 @@
             client.commands.get('roll').execute(message, args);
         } else if (command.includes('recipe')) {
             client.commands.get('recipe').execute(message, args);
-        } else if (command.includes("<@763245951573688350>")) {
-            client.commands.get('@toni')
+        } else if (command.includes(client.user.id)) {
+            client.commands.get('mention').execute(message, args)
         }
 
     });
