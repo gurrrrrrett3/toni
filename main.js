@@ -80,14 +80,6 @@
             client.commands.get('recipe').execute(message, args);
         }
 
-
-
-        if (!command.startsWith(prefix)) {
-            return
-        } else {
-            //COMMANDS 
-            
-        }
     });
     
 
