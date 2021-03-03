@@ -97,9 +97,10 @@
             client.commands.get('recipe').execute(message, args);
         } else if (command.includes(client.user.id)) {
             client.commands.get('mention').execute(message, args)
-        }
+        } else if (command.includes('broken')) {
+            client.commands.get('broken').execute(message, args)
 
-    });
+        }});
     
 
     
