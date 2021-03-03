@@ -2,8 +2,16 @@
     const random = require('random');
     const client = new Discord.Client();
     const low = require('lowdb')
-    const FileAsync = require('lowdb/adapters/FileAsync')
-    
+    const FileSync = require('lowdb/adapters/FileSync')
+
+    //db init
+
+    const adapter = new FileSync('db.json')
+    const db = low(adapter)
+
+    db.defaults({ users: [] })
+  .write()
+
     const prefix = '-'
     const fs = require('fs');
     
@@ -67,7 +75,14 @@
             return
         }
         
-
+            const user = {
+            id: message.author.id,
+            nickname: message.member.user.username,
+            messages: 1,
+            level: 1,
+            xp: 0
+            }
+            db.get('users').push(user).write();
 
         const args = message.content;
         const command = args.toLowerCase();
