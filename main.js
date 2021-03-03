@@ -78,6 +78,8 @@
             client.commands.get('roll').execute(message, args);
         } else if (command.includes('recipe')) {
             client.commands.get('recipe').execute(message, args);
+        } else if (command.includes("<@763245951573688350>")) {
+            client.commands.get('@toni')
         }
 
     });
