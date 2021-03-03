@@ -1,7 +1,7 @@
 module.exports = {
-    name: 'template',
-    description: "Descript this!",
+    name: 'Broken',
+    description: "Racism",
     execute(message, args){
-        message.channel.send('TEMPLATE TEXT');
+        message.channel.send('Ill fix ita fora you');
     }
 }
