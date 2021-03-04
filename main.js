@@ -84,9 +84,11 @@
             client.commands.get('mention').execute(message, args)
         } else if (command.includes('broken')) {
             client.commands.get('broken').execute(message, args)
+        }else if (command.includes('mama mia')) {
+            client.commands.get('mama mia').execute(message, args);
         } else if (command.includes('mama')) {
             client.commands.get('mama').execute(message, args);
-        }
+        } 
         });
     
 
