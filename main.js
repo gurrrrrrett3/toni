@@ -44,7 +44,6 @@ const fs = require('fs');
 
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync');
-const { version } = require('os');
 
 //end requires
 
