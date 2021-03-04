@@ -168,6 +168,8 @@ const { subtract } = require('lodash');
             client.commands.get('mama').execute(message, args);
         } else if (command.includes('italy')) {
             client.commands.get('flag').execute(message, args);
+        } else if (command.includes('angel hair')) {
+            client.commands('Angel hair').execute(message, args)
         }
         });
     
