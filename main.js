@@ -15,6 +15,20 @@ The #1 obscure italian Discord bot
 
 */
 
+//code version
+const ver = '3.4.6'
+
+//Global toni settings
+
+//percent removed from shop purchaces
+const tax = 0
+
+//bank intrest
+const intrest = 1.25
+
+
+
+
 //Requires
 
 //Discord js
@@ -29,7 +43,8 @@ const fs = require('fs');
 //lowdb
 
 const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
+const FileSync = require('lowdb/adapters/FileSync');
+const { version } = require('os');
 
 //end requires
 
@@ -44,7 +59,7 @@ db.defaults({
     .write()
 
 
-//prefix, might use later, although not being used now.
+//prefix for the bot, change this to change the prefix!
 
 const prefix = '-'
 
@@ -114,23 +129,21 @@ client.on('message', message => {
             id: message.author.id,
             nickname: message.member.user.username,
             messages: 0,
-            level: 1,
+            level: 0,
             xp: 0,
-            last_xp: 0
+            last_xp: 0,
+            flair: 'This is the default flair! Use -flair to change it!',
+            money: 250,
+            bank: 0
         }
         users.push(userDefault).write(); //set database with new entry
 
         users = db.get('users') //update the database variable
-
-        user = users.find({
-                id: message.author.id
-            }) //update the user object
-
         userdata = users.find({
                 id: message.author.id
             }).value() //update userdata
 
-        console.log(`User didn't exist in the database, created an entry: \n${userdata}`)
+        console.log(`${message.member.user.username} didn't exist in the database, created an entry`)
 
     }
 
@@ -189,9 +202,12 @@ client.on('message', message => {
     //The code for these are in the commands folder
 
 
-    const args = message.content;
-    const command = args.toLowerCase();
+    const msg = message.content;
+    const command = msg.toLowerCase();
+    const args = command.replace(prefix,'').split(' ')
 
+    if (!command.startsWith(prefix)) {  //this will ignore the non prefix commands 
+                                        // if the command starts with the prefix
 
     if (command.includes('toni')) {
         message.channel.send("Ciao, sono Toni!")
@@ -213,9 +229,233 @@ client.on('message', message => {
         client.commands.get('flag').execute(message, args);
     } else if (command.includes('angel hair')) {
         client.commands('Angel hair').execute(message, args)
+    } 
+
+} else { //The command starts with the prefix
+
+    //now we can run the commands in this file instead of branching off, as there will be less of them
+    
+      //-----------------//
+     //* LEVEL COMMAND *//
+    //-----------------//
+
+    if (args[0] == 'level') {
+
+        //grab the database, as it will have updated
+
+        //User database
+
+        users = db.get('users') 
+        
+        //User object
+
+        userdata = users.find({
+                id: message.author.id
+            }).value() 
+
+        
+            //send a message with the data, 
+            //I'm not going to use the embed function here
+            //as I want to use an image
+
+            const xpNeeded = (5 * (userdata.level ^ 2) + 50 * userdata.level + 100) - userdata.xp 
+
+            const levelEmbed = new Discord.MessageEmbed()
+            .setAuthor(`${message.member.displayName}'s Level`)
+            .setTitle(userdata.nickname)
+            .setDescription(`"${userdata.flair}"`)
+            .addFields(
+                { name: 'Level: ', value: userdata.level },
+                { name: 'XP: ', value: userdata.xp },
+                { name: 'XP needed to level up: ', value: xpNeeded }
+            )
+            .setColor(message.member.displayHexColor)
+            .setThumbnail(message.author.avatarURL())
+            .setTimestamp()
+            .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
+
+            //send it!
+
+            message.channel.send(levelEmbed)
+
     }
-});
+
+
+      //--------------------//
+     //* PROFILE COMMAND *//
+    //------------------//
+
+    if (args[0] == 'profile') {
+        
+        //almost the same as the level command,
+        //just in a diffrent format
+
+        //grab the database, as it will have updated
+
+        //User database
+
+        users = db.get('users') 
+        
+        //User object
+
+        userdata = users.find({
+                id: message.author.id
+            }).value() 
+
+        const profileEmbed = new Discord.MessageEmbed()
+        .setAuthor(`${message.member.displayName}'s Profile`)
+        .setTitle(userdata.nickname)
+        .setDescription(`"${userdata.flair}"`)
+            .addFields(
+                { name: 'Level: ', value: userdata.level , inline: true } ,
+                { name: 'XP: ', value: userdata.xp , inline: true },
+                { name: 'Messages: ', value: userdata.messages , inline: true }
+            )
+            .setColor(message.member.displayHexColor)
+            .setThumbnail(message.author.avatarURL())
+            .setTimestamp()
+            .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
+            
+            //send it!
+
+            message.channel.send(profileEmbed)
+
+    }
+
+          //-----------------//
+         //* FLAIR COMMAND *//
+        //-----------------//
+
+        if (args[0] == 'flair') {
+            //this command lets you set your flair,
+            //which is the text in quotes under your
+            //name in the level and profile commands
+
+            //if the user doesn't set a flair, just display 
+            //their current flair as a mini profile
+
+            if (!args[1]) {
+                const miniProfileEmbed = new Discord.MessageEmbed()
+                .setAuthor(`${message.member.displayName}'s Flair`)
+                .setTitle(userdata.nickname)
+                .setDescription(`"${userdata.flair}"`)
+                .setColor(message.member.displayHexColor)
+                .setThumbnail(message.author.avatarURL())
+                .setTimestamp()
+                .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
+
+                message.channel.send(miniProfileEmbed)
+            } else {
+                
+                //The user has specified a flair, so let's change it!
+                
+                const flairText = message.content.replace(`-flair `, '')
+
+                users.find({id: id}).assign({flair: flairText}).write()
+
+                //now we can display it, we don't need to grab the databse,
+                //because we have it in a variable!
+
+                const miniProfileEmbed = new Discord.MessageEmbed()
+                .setAuthor(`Updated your Flair!`)
+                .setTitle(userdata.nickname)
+                .setDescription(`"${flairText}"`)
+                .setColor(message.member.displayHexColor)
+                .setThumbnail(message.author.avatarURL())
+                .setTimestamp()
+                .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
+
+                message.channel.send(miniProfileEmbed)
+
+            }
+
+        }
+
+          //--------------------//
+         //* NICKNAME COMMAND *//
+        //--------------------//
+
+        if (args[0] == 'nickname') {
+
+            //this command lets the user change the nickname
+            //displayed on their profile and user page!
+
+            //We don't need the database, as we have it from 
+            //updating the database for level data!
+
+            //If the user didn't specify a username, just 
+            //show a mini profile with their current nickname
+
+            if (!args[1]) {
+                const miniProfileEmbed = new Discord.MessageEmbed()
+                .setAuthor(`${message.member.displayName}'s Nickname`)
+                .setTitle(userdata.nickname)
+                .setDescription(`"${userdata.flair}"`)
+                .setColor(message.member.displayHexColor)
+                .setThumbnail(message.author.avatarURL())
+                .setTimestamp()
+                .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
+
+                message.channel.send(miniProfileEmbed)
+            } else {
+                
+                //The user has specified a nickname!, so let's change it!
+                
+                const nickText = message.content.replace(`-nickname `, '')
+
+                users.find({id: id}).assign({nickname: nickText}).write()
+
+                //now we can display it, we don't need to grab the databse,
+                //because we have it in a variable!
+
+                const miniProfileEmbed = new Discord.MessageEmbed()
+                .setAuthor(`Updated your Nickname!`)
+                .setTitle(nickText)
+                .setDescription(`"${userdata.flair}"`)
+                .setColor(message.member.displayHexColor)
+                .setThumbnail(message.author.avatarURL())
+                .setTimestamp()
+                .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
+
+                message.channel.send(miniProfileEmbed)
+                
+            }
+
+
+
+        }
+
+}
+
+
+
+})
 
 
 //Token! (I need to add dotenv later...)
 client.login('NzYzMjQ1OTUxNTczNjg4MzUw.X306Lw.l-gywr0VUvSLRRKTaZNSK4mhddA');
+
+//functions!
+
+
+function embed(title, description, color) {
+    const embed = new Discord.MessageEmbed()
+    .setTitle(title)
+    .setDescription(description)
+    .setColor(color)
+    .setTimestamp()
+    .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
+
+    return embed
+}
+
+function systemInfo() {
+
+    const info = {
+        version: process.version,
+        ram: process.memoryUsage(),
+        cpu: process.cpuUsage()
+        
+    }
+    return info
+}

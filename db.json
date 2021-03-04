@@ -3,10 +3,27 @@
     {
       "id": "232510731067588608",
       "nickname": "Gucci Garrett",
-      "messages": 12,
-      "level": 1,
-      "xp": 41,
-      "last_xp": 1614882121884
+      "messages": 83,
+      "level": 4,
+      "xp": 22,
+      "last_xp": 1614893210320,
+      "flair": "Ya know, I'm kind of a nerd myself!"
+    },
+    {
+      "id": "555080508376219648",
+      "nickname": "JLaqua7",
+      "messages": 22,
+      "level": 2,
+      "xp": 16,
+      "last_xp": 1614893466037
+    },
+    {
+      "id": "763245951573688350",
+      "nickname": "Toni",
+      "messages": 26,
+      "level": 2,
+      "xp": 30,
+      "last_xp": 1614893136758
     }
   ]
 }
