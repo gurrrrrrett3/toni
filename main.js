@@ -90,8 +90,8 @@
             client.commands.get('mama').execute(message, args);
         } else if (command.includes('flag')) {
             client.commands.get('flag').execute(message, args);
-        } else if (command.includes('Angel hair')) {
-            client.commands('Angel Hair').execute(message, args)
+        } else if (command.includes('angel hair')) {
+            client.commands('Angel hair').execute(message, args)
         }
         });
     
