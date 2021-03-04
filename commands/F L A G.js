@@ -1,7 +1,7 @@
 module.exports = {
-    name: 'template',
-    description: "Descript this!",
+    name: 'flag',
+    description: "F L A G",
     execute(message, args){
-        message.channel.send('TEMPLATE TEXT');
+        message.channel.send('🟩⬜🟥/n🟩⬜🟥/n🟩⬜🟥')
     }
 }
