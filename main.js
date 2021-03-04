@@ -88,7 +88,9 @@
             client.commands.get('mama mia').execute(message, args);
         } else if (command.includes('mama')) {
             client.commands.get('mama').execute(message, args);
-        } 
+        } else if (command.includes('flag')) {
+            client.commands.get('flag').execute(message, args);
+        }
         });
     
 
