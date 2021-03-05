@@ -3,11 +3,13 @@
     {
       "id": "232510731067588608",
       "nickname": "Gucci Garrett",
-      "messages": 83,
-      "level": 4,
-      "xp": 22,
-      "last_xp": 1614893210320,
-      "flair": "Ya know, I'm kind of a nerd myself!"
+      "messages": 106,
+      "level": 5,
+      "xp": 4,
+      "last_xp": 1614901593536,
+      "flair": "Ya know, I'm kind of a nerd myself!",
+      "money": 500,
+      "last_daily": 1614901089703
     },
     {
       "id": "555080508376219648",
@@ -20,10 +22,10 @@
     {
       "id": "763245951573688350",
       "nickname": "Toni",
-      "messages": 26,
+      "messages": 39,
       "level": 2,
-      "xp": 30,
-      "last_xp": 1614893136758
+      "xp": 169,
+      "last_xp": 1614901593684
     }
   ]
 }

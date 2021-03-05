@@ -26,6 +26,9 @@ const tax = 0
 //bank intrest
 const intrest = 1.25
 
+//Daily amount
+const daily = 500
+
 
 
 
@@ -133,7 +136,9 @@ client.on('message', message => {
             last_xp: 0,
             flair: 'This is the default flair! Use -flair to change it!',
             money: 250,
-            bank: 0
+            bank: 0,
+            last_daily: 0,
+            last_intrest: 0
         }
         users.push(userDefault).write(); //set database with new entry
 
@@ -284,7 +289,7 @@ client.on('message', message => {
      //* PROFILE COMMAND *//
     //------------------//
 
-    if (args[0] == 'profile') {
+    if (args[0] == 'profile' || args[0] == 'money') {
         
         //almost the same as the level command,
         //just in a diffrent format
@@ -301,6 +306,8 @@ client.on('message', message => {
                 id: message.author.id
             }).value() 
 
+        const time = parseTime(72000000 - (Date.now() - validate(userdata.last_daily)))
+
         const profileEmbed = new Discord.MessageEmbed()
         .setAuthor(`${message.member.displayName}'s Profile`)
         .setTitle(userdata.nickname)
@@ -309,6 +316,10 @@ client.on('message', message => {
                 { name: 'Level: ', value: userdata.level , inline: true } ,
                 { name: 'XP: ', value: userdata.xp , inline: true },
                 { name: 'Messages: ', value: userdata.messages , inline: true }
+            )
+            .addFields(
+                { name: 'Balance: ', value: validate(userdata.money) , inline: true },
+                { name: 'Bank: ', value: validate(userdata.bank) , inline: true}
             )
             .setColor(message.member.displayHexColor)
             .setThumbnail(message.author.avatarURL())
@@ -424,8 +435,38 @@ client.on('message', message => {
 
         }
 
-}
+          //-----------------//
+         //* DAILY COMMAND *//
+        //-----------------//
 
+        if (args[0] == 'daily') {
+
+            //The user can run this command once a day, and will get 
+            //an amount of money from it.
+
+
+            if (Date.now() - validate(userdata.last_daily) > 72000000) {
+
+                //user hasn't gotten the daily yet, so give it to them,
+                //as well as setting the timer.
+
+                users.find({id: id}).assign({money: validate(userdata.money) + daily, last_daily: Date.now()}).write()
+
+                message.channel.send(embed("Success!", `Your balance is now: \`$${validate(userdata.money) + daily}\`!`, '#00FF00'))
+            
+            } else {
+
+                //user has already gotten the daily so let them know how long it is until
+                //they can run the command again.
+
+                const time = parseTime(72000000 - (Date.now() - validate(userdata.last_daily)))
+                message.channel.send(embed("Not Yet!", `You still have ${time[0]} hours, ${time[1]} minutes, and ${time[2]} seconds until you can claim your Daily!`, '#FFA000'))
+            }
+
+
+        }
+
+}
 
 
 })
@@ -457,4 +498,20 @@ function systemInfo() {
         
     }
     return info
+}
+
+function parseTime(ms) {
+    const h = Math.floor(ms / 3600000)
+    const m = Math.floor((ms % 3600000) / 60000)
+    const s = Math.floor(((ms % 3600000) % 60000) / 1000)
+
+    return [h,m,s]
+}
+
+function validate(item) {
+
+    if (item == null || item == undefined) {
+        return 0
+    } else return item
+    
 }
