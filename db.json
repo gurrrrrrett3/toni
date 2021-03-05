@@ -2,11 +2,11 @@
   "users": [
     {
       "id": "232510731067588608",
-      "nickname": "Gucci Garrett",
-      "messages": 106,
+      "nickname": "Gucci",
+      "messages": 135,
       "level": 5,
-      "xp": 4,
-      "last_xp": 1614901593536,
+      "xp": 334,
+      "last_xp": 1614911983568,
       "flair": "Ya know, I'm kind of a nerd myself!",
       "money": 500,
       "last_daily": 1614901089703
@@ -14,18 +14,35 @@
     {
       "id": "555080508376219648",
       "nickname": "JLaqua7",
-      "messages": 22,
+      "messages": 79,
       "level": 2,
-      "xp": 16,
-      "last_xp": 1614893466037
+      "xp": 148,
+      "last_xp": 1614909289145,
+      "money": 500,
+      "last_daily": 1614904320380
     },
     {
       "id": "763245951573688350",
       "nickname": "Toni",
-      "messages": 39,
-      "level": 2,
-      "xp": 169,
-      "last_xp": 1614901593684
+      "messages": 114,
+      "level": 4,
+      "xp": 27,
+      "last_xp": 1614911983670
+    },
+    {
+      "id": "584828762432995360",
+      "nickname": "Scxff",
+      "messages": 1,
+      "level": 0,
+      "xp": 19,
+      "last_xp": 1614906431842,
+      "flair": "This is the default flair! Use -flair to change it!",
+      "money": 250,
+      "bank": 0,
+      "last_daily": 0,
+      "last_intrest": 0
     }
-  ]
+  ],
+  "shop": [],
+  "items": []
 }

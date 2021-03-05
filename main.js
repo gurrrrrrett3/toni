@@ -14,7 +14,6 @@ The #1 obscure italian Discord bot
 - Programmers: JLaqua7, Shellos03, Amari
 
 */
-
 //code version
 const ver = '3.4.6'
 
@@ -29,7 +28,11 @@ const intrest = 1.25
 //Daily amount
 const daily = 500
 
+//prefix for the bot, change this to change the prefix!
+const prefix = '-'
 
+//Admin IDs
+const admins = ['232510731067588608', '555080508376219648']
 
 
 //Requires
@@ -48,6 +51,8 @@ const fs = require('fs');
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync');
 
+//sleep
+
 //end requires
 
 //lowdbdb init
@@ -56,14 +61,14 @@ const adapter = new FileSync('db.json')
 const db = low(adapter)
 
 db.defaults({
-        users: []
+        users: [],
+        shop: [],
+        items: []
     })
     .write()
 
 
-//prefix for the bot, change this to change the prefix!
 
-const prefix = '-'
 
 //command handler
 
@@ -83,7 +88,7 @@ client.once('ready', () => {
     console.log('Toni is online!');
 
     //Status Manager
-    
+
     //   const status = [
     //       "Momma Mia!",
     //       "Ciao, sono Toni!",
@@ -121,7 +126,7 @@ client.on('message', message => {
         id: message.author.id
     }).value()
 
-    const id = message.author.id
+    var id = message.author.id
 
     //now we need to check if the user is in the database
 
@@ -138,7 +143,8 @@ client.on('message', message => {
             money: 250,
             bank: 0,
             last_daily: 0,
-            last_intrest: 0
+            last_intrest: 0,
+            inventory: {}
         }
         users.push(userDefault).write(); //set database with new entry
 
@@ -208,132 +214,166 @@ client.on('message', message => {
 
     const msg = message.content;
     const command = msg.toLowerCase();
-    const args = command.replace(prefix,'').split(' ')
+    const args = command.replace(prefix, '').split(' ')
 
-    if (!command.startsWith(prefix)) {  //this will ignore the non prefix commands 
-                                        // if the command starts with the prefix
+    if (!command.startsWith(prefix)) { //this will ignore the non prefix commands 
+        // if the command starts with the prefix
 
-    if (command.includes('toni')) {
-        message.channel.send("Ciao, sono Toni!")
-    } else if (command.includes('pasta')) {
-        client.commands.get('pasta').execute(message, args)
-    } else if (command.includes('roll')) {
-        client.commands.get('roll').execute(message, args);
-    } else if (command.includes('recipe')) {
-        client.commands.get('recipe').execute(message, args);
-    } else if (command.includes(client.user.id)) {
-        client.commands.get('mention').execute(message, args)
-    } else if (command.includes('broken')) {
-        client.commands.get('broken').execute(message, args)
-    } else if (command.includes('mama mia')) {
-        client.commands.get('mama mia').execute(message, args);
-    } else if (command.includes('mama')) {
-        client.commands.get('mama').execute(message, args);
-    } else if (command.includes('italy')) {
-        client.commands.get('flag').execute(message, args);
-    } else if (command.includes('angel hair')) {
-        client.commands('Angel hair').execute(message, args)
-    } 
+        if (command.includes('toni')) {
+            message.channel.send("Ciao, sono Toni!")
+        } else if (command.includes('pasta')) {
+            client.commands.get('pasta').execute(message, args)
+        } else if (command.includes('roll')) {
+            client.commands.get('roll').execute(message, args);
+        } else if (command.includes('recipe')) {
+            client.commands.get('recipe').execute(message, args);
+        } else if (command.includes(client.user.id)) {
+            client.commands.get('mention').execute(message, args)
+        } else if (command.includes('broken')) {
+            client.commands.get('broken').execute(message, args)
+        } else if (command.includes('mama mia')) {
+            client.commands.get('mama mia').execute(message, args);
+        } else if (command.includes('mama')) {
+            client.commands.get('mama').execute(message, args);
+        } else if (command.includes('italy')) {
+            client.commands.get('flag').execute(message, args);
+        } else if (command.includes('angel hair')) {
+            client.commands('Angel hair').execute(message, args)
+        }
 
-} else { //The command starts with the prefix
+    } else { //The command starts with the prefix
 
-    //now we can run the commands in this file instead of branching off, as there will be less of them
-    
-      //-----------------//
-     //* LEVEL COMMAND *//
-    //-----------------//
+        //now we can run the commands in this file instead of branching off, as there will be less of them
 
-    if (args[0] == 'level') {
+        //-----------------//
+        //* LEVEL COMMAND *//
+        //-----------------//
 
-        //grab the database, as it will have updated
+        if (args[0] == 'level') {
 
-        //User database
+            //grab the database, as it will have updated
 
-        users = db.get('users') 
-        
-        //User object
+            //User database
 
-        userdata = users.find({
-                id: message.author.id
-            }).value() 
+            users = db.get('users')
 
-        
+
+            //if the user mentioned someone, we want to grab their data instead!
+
+            if (message.mentions.members.size > 0) {
+                id = message.mentions.members.first().id
+            }
+
+            //User object
+
+            userdata = users.find({
+                id: id
+            }).value()
+
+
             //send a message with the data, 
             //I'm not going to use the embed function here
             //as I want to use an image
 
-            const xpNeeded = (5 * (userdata.level ^ 2) + 50 * userdata.level + 100) - userdata.xp 
+            const xpNeeded = (5 * (userdata.level ^ 2) + 50 * userdata.level + 100) - userdata.xp
 
             const levelEmbed = new Discord.MessageEmbed()
-            .setAuthor(`${message.member.displayName}'s Level`)
-            .setTitle(userdata.nickname)
-            .setDescription(`"${userdata.flair}"`)
-            .addFields(
-                { name: 'Level: ', value: userdata.level },
-                { name: 'XP: ', value: userdata.xp },
-                { name: 'XP needed to level up: ', value: xpNeeded }
-            )
-            .setColor(message.member.displayHexColor)
-            .setThumbnail(message.author.avatarURL())
-            .setTimestamp()
-            .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
+                .setAuthor(`${message.guild.members.cache.get(id).displayName}'s Level`)
+                .setTitle(userdata.nickname)
+                .setDescription(`"${userdata.flair}"`)
+                .addFields({
+                    name: 'Level: ',
+                    value: userdata.level
+                }, {
+                    name: 'XP: ',
+                    value: userdata.xp
+                }, {
+                    name: 'XP needed to level up: ',
+                    value: xpNeeded
+                })
+                .setColor(message.guild.members.cache.get(id).displayHexColor)
+                .setThumbnail(message.guild.members.cache.get(id).user.avatarURL())
+                .setTimestamp()
+                .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
 
             //send it!
 
             message.channel.send(levelEmbed)
 
-    }
+        }
 
 
-      //--------------------//
-     //* PROFILE COMMAND *//
-    //------------------//
+        //--------------------//
+        //* PROFILE COMMAND *//
+        //------------------//
 
-    if (args[0] == 'profile' || args[0] == 'money') {
-        
-        //almost the same as the level command,
-        //just in a diffrent format
+        if (args[0] == 'profile' || args[0] == 'money') {
 
-        //grab the database, as it will have updated
+            //almost the same as the level command,
+            //just in a diffrent format
 
-        //User database
+            //grab the database, as it will have updated
 
-        users = db.get('users') 
-        
-        //User object
+            //User database
 
-        userdata = users.find({
-                id: message.author.id
-            }).value() 
+            users = db.get('users')
 
-        const time = parseTime(72000000 - (Date.now() - validate(userdata.last_daily)))
+            //if the user mentioned someone, we want to grab their data instead!
 
-        const profileEmbed = new Discord.MessageEmbed()
-        .setAuthor(`${message.member.displayName}'s Profile`)
-        .setTitle(userdata.nickname)
-        .setDescription(`"${userdata.flair}"`)
-            .addFields(
-                { name: 'Level: ', value: userdata.level , inline: true } ,
-                { name: 'XP: ', value: userdata.xp , inline: true },
-                { name: 'Messages: ', value: userdata.messages , inline: true }
-            )
-            .addFields(
-                { name: 'Balance: ', value: validate(userdata.money) , inline: true },
-                { name: 'Bank: ', value: validate(userdata.bank) , inline: true}
-            )
-            .setColor(message.member.displayHexColor)
-            .setThumbnail(message.author.avatarURL())
-            .setTimestamp()
-            .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
-            
+            if (message.mentions.members.size > 0) {
+                id = message.mentions.members.first().id
+            }
+            //User object
+
+            userdata = users.find({
+                id: id
+            }).value()
+
+            const time = parseTime(72000000 - (Date.now() - validate(userdata.last_daily)))
+
+            const profileEmbed = new Discord.MessageEmbed()
+                .setAuthor(`${message.guild.members.cache.get(id).displayName}'s Profile`)
+                .setTitle(userdata.nickname)
+                .setDescription(`"${userdata.flair}"`)
+                .addFields({
+                    name: 'Level: ',
+                    value: userdata.level,
+                    inline: true
+                }, {
+                    name: 'XP: ',
+                    value: userdata.xp,
+                    inline: true
+                }, {
+                    name: 'Messages: ',
+                    value: userdata.messages,
+                    inline: true
+                })
+                .addFields({
+                    name: 'Balance: ',
+                    value: validate(userdata.money),
+                    inline: true
+                }, {
+                    name: 'Bank: ',
+                    value: validate(userdata.bank),
+                    inline: true
+                }, {
+                    name: 'Time until Daily: ',
+                    value: `${time[0]}:${time[1]}:${time[2]}`,
+                    inline: true
+                })
+                .setColor(message.guild.members.cache.get(id).displayHexColor)
+                .setThumbnail(message.guild.members.cache.get(id).user.avatarURL())
+                .setTimestamp()
+                .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
+
             //send it!
 
             message.channel.send(profileEmbed)
 
-    }
+        }
 
-          //-----------------//
-         //* FLAIR COMMAND *//
+        //-----------------//
+        //* FLAIR COMMAND *//
         //-----------------//
 
         if (args[0] == 'flair') {
@@ -346,34 +386,38 @@ client.on('message', message => {
 
             if (!args[1]) {
                 const miniProfileEmbed = new Discord.MessageEmbed()
-                .setAuthor(`${message.member.displayName}'s Flair`)
-                .setTitle(userdata.nickname)
-                .setDescription(`"${userdata.flair}"`)
-                .setColor(message.member.displayHexColor)
-                .setThumbnail(message.author.avatarURL())
-                .setTimestamp()
-                .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
+                    .setAuthor(`${message.member.displayName}'s Flair`)
+                    .setTitle(userdata.nickname)
+                    .setDescription(`"${userdata.flair}"`)
+                    .setColor(message.member.displayHexColor)
+                    .setThumbnail(message.author.avatarURL())
+                    .setTimestamp()
+                    .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
 
                 message.channel.send(miniProfileEmbed)
             } else {
-                
+
                 //The user has specified a flair, so let's change it!
-                
+
                 const flairText = message.content.replace(`-flair `, '')
 
-                users.find({id: id}).assign({flair: flairText}).write()
+                users.find({
+                    id: id
+                }).assign({
+                    flair: flairText
+                }).write()
 
                 //now we can display it, we don't need to grab the databse,
                 //because we have it in a variable!
 
                 const miniProfileEmbed = new Discord.MessageEmbed()
-                .setAuthor(`Updated your Flair!`)
-                .setTitle(userdata.nickname)
-                .setDescription(`"${flairText}"`)
-                .setColor(message.member.displayHexColor)
-                .setThumbnail(message.author.avatarURL())
-                .setTimestamp()
-                .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
+                    .setAuthor(`Updated your Flair!`)
+                    .setTitle(userdata.nickname)
+                    .setDescription(`"${flairText}"`)
+                    .setColor(message.member.displayHexColor)
+                    .setThumbnail(message.author.avatarURL())
+                    .setTimestamp()
+                    .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
 
                 message.channel.send(miniProfileEmbed)
 
@@ -381,8 +425,8 @@ client.on('message', message => {
 
         }
 
-          //--------------------//
-         //* NICKNAME COMMAND *//
+        //--------------------//
+        //* NICKNAME COMMAND *//
         //--------------------//
 
         if (args[0] == 'nickname') {
@@ -398,45 +442,49 @@ client.on('message', message => {
 
             if (!args[1]) {
                 const miniProfileEmbed = new Discord.MessageEmbed()
-                .setAuthor(`${message.member.displayName}'s Nickname`)
-                .setTitle(userdata.nickname)
-                .setDescription(`"${userdata.flair}"`)
-                .setColor(message.member.displayHexColor)
-                .setThumbnail(message.author.avatarURL())
-                .setTimestamp()
-                .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
+                    .setAuthor(`${message.member.displayName}'s Nickname`)
+                    .setTitle(userdata.nickname)
+                    .setDescription(`"${userdata.flair}"`)
+                    .setColor(message.member.displayHexColor)
+                    .setThumbnail(message.author.avatarURL())
+                    .setTimestamp()
+                    .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
 
                 message.channel.send(miniProfileEmbed)
             } else {
-                
+
                 //The user has specified a nickname!, so let's change it!
-                
+
                 const nickText = message.content.replace(`-nickname `, '')
 
-                users.find({id: id}).assign({nickname: nickText}).write()
+                users.find({
+                    id: id
+                }).assign({
+                    nickname: nickText
+                }).write()
 
                 //now we can display it, we don't need to grab the databse,
                 //because we have it in a variable!
 
                 const miniProfileEmbed = new Discord.MessageEmbed()
-                .setAuthor(`Updated your Nickname!`)
-                .setTitle(nickText)
-                .setDescription(`"${userdata.flair}"`)
-                .setColor(message.member.displayHexColor)
-                .setThumbnail(message.author.avatarURL())
-                .setTimestamp()
-                .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
+                    .setAuthor(`Updated your Nickname!`)
+                    .setTitle(nickText)
+                    .setDescription(`"${userdata.flair}"`)
+                    .setColor(message.member.displayHexColor)
+                    .setThumbnail(message.author.avatarURL())
+                    .setTimestamp()
+                    .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
 
                 message.channel.send(miniProfileEmbed)
-                
+
             }
 
 
 
         }
 
-          //-----------------//
-         //* DAILY COMMAND *//
+        //-----------------//
+        //* DAILY COMMAND *//
         //-----------------//
 
         if (args[0] == 'daily') {
@@ -450,10 +498,15 @@ client.on('message', message => {
                 //user hasn't gotten the daily yet, so give it to them,
                 //as well as setting the timer.
 
-                users.find({id: id}).assign({money: validate(userdata.money) + daily, last_daily: Date.now()}).write()
+                users.find({
+                    id: id
+                }).assign({
+                    money: validate(userdata.money) + daily,
+                    last_daily: Date.now()
+                }).write()
 
                 message.channel.send(embed("Success!", `Your balance is now: \`$${validate(userdata.money) + daily}\`!`, '#00FF00'))
-            
+
             } else {
 
                 //user has already gotten the daily so let them know how long it is until
@@ -466,7 +519,42 @@ client.on('message', message => {
 
         }
 
-}
+        /*
+           *----------------*
+           I ADMIN COMMANDS I
+           *----------------*
+
+           Admin access only past this point!
+           Edit Admin list at the top of the code!
+
+           */
+
+        if (!admins.includes(message.author.id)) {
+            return
+        }
+
+        //Stop command 
+        if (args[0] == 'nyquil') {
+
+            message.channel.send('Hey, what are you doing with that NyQuil?')
+            setTimeout(function() {
+                message.channel.send('Why are you putting it in that syringe?')
+                setTimeout(function() {
+                    message.channel.send('HEY! STopp.... zzzzz')
+                    setTimeout(function() {
+                        process.exit(-1)
+                    }, 1000)
+
+                }, 3000);
+
+            }, 3000);
+
+
+
+
+        }
+
+    }
 
 
 })
@@ -480,11 +568,11 @@ client.login('NzYzMjQ1OTUxNTczNjg4MzUw.X306Lw.l-gywr0VUvSLRRKTaZNSK4mhddA');
 
 function embed(title, description, color) {
     const embed = new Discord.MessageEmbed()
-    .setTitle(title)
-    .setDescription(description)
-    .setColor(color)
-    .setTimestamp()
-    .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
+        .setTitle(title)
+        .setDescription(description)
+        .setColor(color)
+        .setTimestamp()
+        .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
 
     return embed
 }
@@ -495,7 +583,7 @@ function systemInfo() {
         version: process.version,
         ram: process.memoryUsage(),
         cpu: process.cpuUsage()
-        
+
     }
     return info
 }
@@ -505,7 +593,7 @@ function parseTime(ms) {
     const m = Math.floor((ms % 3600000) / 60000)
     const s = Math.floor(((ms % 3600000) % 60000) / 1000)
 
-    return [h,m,s]
+    return [h, m, s]
 }
 
 function validate(item) {
@@ -513,5 +601,5 @@ function validate(item) {
     if (item == null || item == undefined) {
         return 0
     } else return item
-    
+
 }
