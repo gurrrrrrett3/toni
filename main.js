@@ -240,7 +240,7 @@ client.on('message', message => {
         } else if (command.includes('angel hair')) {
             client.commands('Angel hair').execute(message, args)
         } else if (command.includes('zatch')) {
-            client.commands('zatch').execute(message, args);
+            client.commands.get('zatch').execute(message, args);
         }
 
     } else { //The command starts with the prefix
