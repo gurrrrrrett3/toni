@@ -41,6 +41,20 @@
       "bank": 0,
       "last_daily": 0,
       "last_intrest": 0
+    },
+    {
+      "id": "780960490670129173",
+      "nickname": "Enderdragon",
+      "messages": 1,
+      "level": 0,
+      "xp": 24,
+      "last_xp": 1615041595101,
+      "flair": "This is the default flair! Use -flair to change it!",
+      "money": 250,
+      "bank": 0,
+      "last_daily": 0,
+      "last_intrest": 0,
+      "inventory": {}
     }
   ],
   "shop": [],
