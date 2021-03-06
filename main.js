@@ -51,7 +51,9 @@ const fs = require('fs');
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync');
 
-//sleep
+//lodash
+
+const _ = require('lodash')
 
 //end requires
 
@@ -89,15 +91,14 @@ client.once('ready', () => {
 
     //Status Manager
 
-    //   const status = [
-    //       "Momma Mia!",
-    //       "Ciao, sono Toni!",
-    //      "#1 Obscure Italian Discord bot!"
-    //   ]
+        const status = [
+        "Momma Mia!",
+        "Ciao, sono Toni!",
+        "#1 Obscure Italian Discord bot!"
+        ]
 
-    //const randomStatus = status[random.int(0,status.length)]
-    //client.user.setStatus('online', randomStatus)
-
+    const randomStatus = status[Math.floor(Math.random() * status.length)]
+    client.user.setActivity(randomStatus)
 });
 
 //Let's get on to event handling!
@@ -138,6 +139,7 @@ client.on('message', message => {
             messages: 0,
             level: 0,
             xp: 0,
+            total_xp: 0,
             last_xp: 0,
             flair: 'This is the default flair! Use -flair to change it!',
             money: 250,
@@ -159,10 +161,10 @@ client.on('message', message => {
 
     //Now we are sure the user is in the database, and we can update variables without errors
 
-    const currentMessages = userdata.messages + 1
-    var lastXp = userdata.last_xp
-    const xp = userdata.xp
-    var newLevel = userdata.level
+    const currentMessages = validate(userdata.messages + 1)
+    var lastXp = validate(userdata.last_xp)
+    const xp = validate(userdata.xp)
+    var newLevel = validate(userdata.level)
 
     var newXp = xp
 
@@ -171,6 +173,7 @@ client.on('message', message => {
 
         const xpToGive = Math.ceil(Math.random() * 10) + 15 //gives a random number between 15 and 25
         newXp = xp + xpToGive
+
 
         //check if user has enough xp to level up
 
@@ -185,7 +188,18 @@ client.on('message', message => {
             newXp = newXp - xpNeeded
 
         }
+        
     }
+
+    //calculate current xp
+    var totalXp = 0
+    for (let index = 1; index <= newLevel; index++) {
+
+        totalXp = totalXp + (5 * (index ^ 2) + 50 * index + 100)
+
+    }
+    totalXp = totalXp + newXp //add current xp
+
 
     //now we can save the new data to the database 
 
@@ -195,7 +209,8 @@ client.on('message', message => {
         messages: currentMessages,
         last_xp: lastXp,
         level: newLevel,
-        xp: newXp
+        xp: newXp,
+        total_xp: validate(totalXp)
     }).write()
 
     //now we can run command stuff
@@ -206,6 +221,12 @@ client.on('message', message => {
         console.log('RESPONSE: ' + message.content)
         return
     }
+
+    if(message.author.id == client.user.id) {
+        message.delete({ timeout: 1000 })
+    }
+
+
 
 
     //basic commands, just checking for a word and responding to it. 
@@ -282,15 +303,20 @@ client.on('message', message => {
                 .setTitle(userdata.nickname)
                 .setDescription(`"${userdata.flair}"`)
                 .addFields({
-                    name: 'Level: ',
-                    value: userdata.level
-                }, {
-                    name: 'XP: ',
-                    value: userdata.xp
-                }, {
-                    name: 'XP needed to level up: ',
-                    value: xpNeeded
-                })
+                        name: 'Level: ',
+                        value: userdata.level
+                    }, {
+                        name: 'XP: ',
+                        value: userdata.xp
+                    }, {
+                        name: 'XP needed to level up: ',
+                        value: xpNeeded
+                    }, {
+                        name: 'Total XP: ',
+                        value: makeThousands(userdata.total_xp)
+                    }
+
+                )
                 .setColor(message.guild.members.cache.get(id).displayHexColor)
                 .setThumbnail(message.guild.members.cache.get(id).user.avatarURL())
                 .setTimestamp()
@@ -299,6 +325,7 @@ client.on('message', message => {
             //send it!
 
             message.channel.send(levelEmbed)
+            message.delete({reason: "Message deleted by Toni."})
 
         }
 
@@ -369,6 +396,7 @@ client.on('message', message => {
             //send it!
 
             message.channel.send(profileEmbed)
+            message.delete({reason: "Message deleted by Toni."})
 
         }
 
@@ -395,6 +423,7 @@ client.on('message', message => {
                     .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
 
                 message.channel.send(miniProfileEmbed)
+                message.delete({reason: "Message deleted by Toni."})
             } else {
 
                 //The user has specified a flair, so let's change it!
@@ -420,6 +449,7 @@ client.on('message', message => {
                     .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
 
                 message.channel.send(miniProfileEmbed)
+                message.delete({reason: "Message deleted by Toni."})
 
             }
 
@@ -451,6 +481,7 @@ client.on('message', message => {
                     .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
 
                 message.channel.send(miniProfileEmbed)
+                message.delete({reason: "Message deleted by Toni."})
             } else {
 
                 //The user has specified a nickname!, so let's change it!
@@ -476,6 +507,7 @@ client.on('message', message => {
                     .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
 
                 message.channel.send(miniProfileEmbed)
+                message.delete({reason: "Message deleted by Toni."})
 
             }
 
@@ -505,19 +537,79 @@ client.on('message', message => {
                     last_daily: Date.now()
                 }).write()
 
-                message.channel.send(embed("Success!", `Your balance is now: \`$${validate(userdata.money) + daily}\`!`, '#00FF00'))
+                message.channel.send(embed("Success!", `Your balance is now: \`$${validate(userdata.money)}\`!`, '#00FF00'))
+
+                message.delete({reason: "Message deleted by Toni."})
 
             } else {
-
-                //user has already gotten the daily so let them know how long it is until
+                //user has already gotten the daily
+                // so let them know how long it is until
                 //they can run the command again.
 
                 const time = parseTime(72000000 - (Date.now() - validate(userdata.last_daily)))
                 message.channel.send(embed("Not Yet!", `You still have ${time[0]} hours, ${time[1]} minutes, and ${time[2]} seconds until you can claim your Daily!`, '#FFA000'))
+                message.delete({reason: "Message deleted by Toni."})
             }
 
 
         }
+
+        //----------------//
+        //* TOP COMMAND *//
+        //--------------//
+
+
+        if (args[0] == 'top') {
+
+            //get the top 10 items from the database, sorted by [level + xp]
+            //then send them in an embed
+
+
+            //get the top 10 user's id's
+            users = db.get('users')
+            const topUsers = users.orderBy(['level'], ['desc', 'asc']).take(10).orderBy(['xp', ['desc', 'asc']]).map('id').value()
+            var i = 1
+
+            const topEmbed = new Discord.MessageEmbed()
+
+            .setTitle(`Top 10 Users`)
+                .setDescription(`These are the top 10 users with the most xp!`)
+                .setColor('#00FF00')
+                .setTimestamp()
+                .setFooter(`Toni | Version: ${ver}`, client.user.avatarURL())
+
+            topUsers.forEach(element => {
+                const topdata = users.find({
+                    id: element
+                }).value()
+
+                topEmbed.addFields({
+                    name: i,
+                    value: `**${topdata.nickname}**\nLevel: ${topdata.level}\nXP: ${topdata.xp}\nTotal XP: ${makeThousands(topdata.total_xp)}`,
+                    inline: true
+                })
+
+                i++
+
+            });
+
+            message.channel.send(topEmbed)
+            message.delete({reason: "Message deleted by Toni."})
+        }
+
+        //--------------//
+        //* K COMMAND *//
+        //------------//
+
+        if (args[0] == 'k') {
+            if (client.user.lastMessage == null ) {return}
+            client.user.lastMessage.delete()
+            message.delete({reason: "Message deleted by Toni."})
+
+
+        }
+
+
 
         /*
            *----------------*
@@ -537,11 +629,11 @@ client.on('message', message => {
         if (args[0] == 'nyquil') {
 
             message.channel.send('Hey, what are you doing with that NyQuil?')
-            setTimeout(function() {
+            setTimeout(function () {
                 message.channel.send('Why are you putting it in that syringe?')
-                setTimeout(function() {
+                setTimeout(function () {
                     message.channel.send('HEY! STopp.... zzzzz')
-                    setTimeout(function() {
+                    setTimeout(function () {
                         process.exit(-1)
                     }, 1000)
 
@@ -550,6 +642,31 @@ client.on('message', message => {
             }, 3000);
 
 
+
+
+        }
+
+        //ADD ITEM COMMAND
+
+        if (args[0] == 'additem') {
+
+            //load item db
+
+            var items = db.get('items')
+
+            if (!args[2]) {
+                message.channel.send(embed("Error", "Missing arguements", "#FF0000"))
+            } else {
+                const itemID = _.size(items.value())
+                const itemName = args[1].replace('_', ' ')
+                items.push({
+                    id: itemID,
+                    name: args[1],
+                    price: args[2]
+                }).write()
+
+                message.channel.send(embed("Created Item!", `Name: ${itemName}\nPrice: $${args[2]}\nID: ${itemID}`))
+            }
 
 
         }
@@ -598,8 +715,17 @@ function parseTime(ms) {
 
 function validate(item) {
 
-    if (item == null || item == undefined) {
+    if (item === null || item === undefined || item === NaN) {
         return 0
     } else return item
 
+}
+
+
+function makeThousands(number) {
+    if (number > 999) {
+
+        return `${(Math.round(number / 10) )/100}k`
+
+    } else return number
 }
