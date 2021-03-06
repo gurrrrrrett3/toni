@@ -277,8 +277,10 @@ client.on('message', message => {
             client.commands('Angel hair').execute(message, args)
         } else if (command.includes('zatch')) {
             client.commands.get('zatch').execute(message, args);
+        } else if (command.includes('meatball')) {
+            client.commands.get('meatball').execute(message, args)
         }
-
+ 
     } else { //The command starts with the prefix
 
         //now we can run the commands in this file instead of branching off, as there will be less of them
