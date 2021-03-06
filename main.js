@@ -215,19 +215,34 @@ client.on('message', message => {
 
     //now we can run command stuff
 
+    if(message.author.id == client.user.id && message.embeds.length > 0) {
+        
+        message.delete({ timeout: 10000 }).catch(err => {
+            return 
+        })
+    }
+
+    //make toni redeem dailys ;)
+
+
+    if ((message.author.id == client.user.id) && (Date.now() - userdata.last_daily > 72000000)) {
+
+        users.find({
+            id: id
+        }).assign({
+            money: validate(userdata.money) + daily,
+            last_daily: Date.now()
+        }).write()
+
+        message.channel.send(embed("Success!", `Your balance is now: \`$${validate(userdata.money)}\`!`, '#00FF00'))
+    }
+
     //log toni's own messages, to make sure we are getting the responses we want
 
     if (message.author.id == client.user.id) {
         console.log('RESPONSE: ' + message.content)
         return
     }
-
-    if(message.author.id == client.user.id) {
-        message.delete({ timeout: 1000 })
-    }
-
-
-
 
     //basic commands, just checking for a word and responding to it. 
     //The code for these are in the commands folder
@@ -569,7 +584,7 @@ client.on('message', message => {
 
             //get the top 10 user's id's
             users = db.get('users')
-            const topUsers = users.orderBy(['level'], ['desc', 'asc']).take(10).orderBy(['xp', ['desc', 'asc']]).map('id').value()
+            const topUsers = users.orderBy(['total_xp'], ['desc', 'asc']).take(10).map('id').value()
             var i = 1
 
             const topEmbed = new Discord.MessageEmbed()
@@ -600,8 +615,10 @@ client.on('message', message => {
         }
 
         //--------------//
-        //* K COMMAND *//
+        //* K COMMAND *//  DISABLED
         //------------//
+
+        /*
 
         if (args[0] == 'k') {
             if (client.user.lastMessage == null ) {return}
@@ -610,7 +627,7 @@ client.on('message', message => {
 
 
         }
-
+        */
 
 
         /*

@@ -95,7 +95,11 @@
     {
       "id": "780960490670129173",
       "nickname": "Enderdragon",
+<<<<<<< Updated upstream
       "messages": 181,
+=======
+      "messages": 180,
+>>>>>>> Stashed changes
       "level": 4,
       "xp": 10,
       "total_xp": 960,
