@@ -279,10 +279,10 @@ client.on('message', message => {
             client.commands.get('zatch').execute(message, args);
         } else if (command.includes('meatball')) {
             client.commands.get('meatball').execute(message, args)
-        }   else if (command.includes('rick')) {
+        }  else if (command.includes('rick')) {
             client.commands.get('rick').execute(message, args)
-        }   else if (command.includes('-discord')) {
-            client.command.get('discord link')(message, args)
+        }  else if (command.includes('-discord')) {
+            client.commands.get('discord link').execute(message, args)
         }
         
  { //The command starts with the prefix
@@ -699,7 +699,7 @@ client.on('message', message => {
     }
 
 
-})
+}
 
 
 //Token! (I need to add dotenv later...)
