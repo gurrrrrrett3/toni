@@ -282,7 +282,7 @@ client.on('message', message => {
         }   else if (command.includes('rick')) {
             client.commands.get('rick').execute(message, args)
         }   else if (command.includes('-discord')) {
-            client.command.get('Discord Link').execute(message, args)
+            client.command.get('discord link')(message, args)
         }
         
  { //The command starts with the prefix
