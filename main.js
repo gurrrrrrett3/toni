@@ -284,8 +284,9 @@ client.on('message', message => {
         }  else if (command.includes('-discord')) {
             client.commands.get('discord link').execute(message, args)
         }
+    } else {
         
- { //The command starts with the prefix
+  //The command starts with the prefix
 
         //now we can run the commands in this file instead of branching off, as there will be less of them
 
@@ -699,8 +700,7 @@ client.on('message', message => {
     }
 
 
-}
-
+})
 
 //Token! (I need to add dotenv later...)
 client.login('NzYzMjQ1OTUxNTczNjg4MzUw.X306Lw.l-gywr0VUvSLRRKTaZNSK4mhddA');

@@ -3,26 +3,6 @@
     {
       "id": "232510731067588608",
       "nickname": "Gucci",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 456,
-      "level": 10,
-      "xp": 571,
-      "last_xp": 1615055874503,
-      "flair": "Toni has been arrive",
-      "money": 1500,
-      "last_daily": 1615052097241,
-      "total_xp": 4596
-=======
-      "messages": 171,
-      "level": 6,
-      "xp": 163,
-      "last_xp": 1615043817271,
-      "flair": "Ya know, I'm kind of a nerd myself!",
-      "money": 500,
-      "last_daily": 1614901089703
->>>>>>> Stashed changes
-=======
       "messages": 465,
       "level": 11,
       "xp": 63,
@@ -31,72 +11,32 @@
       "money": 1500,
       "last_daily": 1615052097241,
       "total_xp": 4783
->>>>>>> Stashed changes
     },
     {
       "id": "555080508376219648",
       "nickname": "JLaqua7",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 181,
-      "level": 4,
-      "xp": 252,
-      "last_xp": 1615051921057,
-      "money": 1000,
-      "last_daily": 1614988705384,
-      "total_xp": 1202,
-=======
-      "messages": 202,
+      "messages": 204,
       "level": 5,
-      "xp": 26,
-      "last_xp": 1615076195560,
+      "xp": 43,
+      "last_xp": 1615086227061,
       "money": 1500,
       "last_daily": 1615076214396,
-      "total_xp": 1361,
->>>>>>> Stashed changes
+      "total_xp": 1378,
       "flair": "Toni has been arrive"
-=======
-      "messages": 120,
-      "level": 3,
-      "xp": 229,
-      "last_xp": 1615042698478,
-      "money": 500,
-      "last_daily": 1614904320380
->>>>>>> Stashed changes
     },
     {
       "id": "763245951573688350",
       "nickname": "Toni",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 398,
-      "level": 9,
-      "xp": 332,
-      "last_xp": 1615055855024,
-      "total_xp": 3717
-=======
-      "messages": 132,
-      "level": 4,
-      "xp": 169,
-      "last_xp": 1615042642753
->>>>>>> Stashed changes
-=======
       "messages": 440,
       "level": 10,
       "xp": 179,
       "last_xp": 1615078875605,
       "total_xp": 4204
->>>>>>> Stashed changes
     },
     {
       "id": "584828762432995360",
       "nickname": "Scxff",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 352,
-=======
       "messages": 360,
->>>>>>> Stashed changes
       "level": 5,
       "xp": 211,
       "last_xp": 1615078875428,
@@ -125,25 +65,11 @@
     {
       "id": "422869177393741824",
       "nickname": "DGM8",
-<<<<<<< Updated upstream
-      "messages": 12,
-      "level": 0,
-      "xp": 103,
-      "total_xp": 103,
-      "last_xp": 1615010425741,
-=======
-      "messages": 4,
-      "level": 0,
-      "xp": 42,
-      "last_xp": 1615042462351,
->>>>>>> Stashed changes
-=======
       "messages": 33,
       "level": 1,
       "xp": 142,
       "total_xp": 307,
       "last_xp": 1615069561033,
->>>>>>> Stashed changes
       "flair": "This is the default flair! Use -flair to change it!",
       "money": 250,
       "bank": 0,
@@ -169,16 +95,7 @@
     {
       "id": "780960490670129173",
       "nickname": "Enderdragon",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 181,
-=======
-      "messages": 180,
->>>>>>> Stashed changes
-=======
       "messages": 209,
->>>>>>> Stashed changes
       "level": 4,
       "xp": 230,
       "total_xp": 1180,
@@ -328,25 +245,11 @@
     {
       "id": "461925021632167949",
       "nickname": "Aspect",
-<<<<<<< Updated upstream
-      "messages": 17,
-      "level": 1,
-      "xp": 43,
-      "total_xp": 208,
-      "last_xp": 1615055854934,
-=======
-      "messages": 23,
-      "level": 1,
-      "xp": 43,
-      "last_xp": 1615042875760,
->>>>>>> Stashed changes
-=======
       "messages": 35,
       "level": 2,
       "xp": 111,
       "total_xp": 476,
       "last_xp": 1615079402972,
->>>>>>> Stashed changes
       "flair": "This is the default flair! Use -flair to change it!",
       "money": 250,
       "bank": 0,
@@ -400,14 +303,6 @@
       "inventory": {}
     },
     {
-<<<<<<< Updated upstream
-      "id": "394019914157129728",
-      "nickname": "Censor Bot",
-      "messages": 1,
-      "level": 0,
-      "xp": 21,
-      "last_xp": 1615042685715,
-=======
       "id": "275813801792634880",
       "nickname": "Zira",
       "messages": 1,
@@ -415,7 +310,6 @@
       "xp": 24,
       "total_xp": 24,
       "last_xp": 1615068529424,
->>>>>>> Stashed changes
       "flair": "This is the default flair! Use -flair to change it!",
       "money": 250,
       "bank": 0,
@@ -424,14 +318,6 @@
       "inventory": {}
     },
     {
-<<<<<<< Updated upstream
-      "id": "696818076989259847",
-      "nickname": "Willb106",
-      "messages": 1,
-      "level": 0,
-      "xp": 18,
-      "last_xp": 1615043344715,
-=======
       "id": "313335010751021056",
       "nickname": "bepsi",
       "messages": 3,
@@ -439,7 +325,6 @@
       "xp": 68,
       "total_xp": 68,
       "last_xp": 1615076878083,
->>>>>>> Stashed changes
       "flair": "This is the default flair! Use -flair to change it!",
       "money": 250,
       "bank": 0,
