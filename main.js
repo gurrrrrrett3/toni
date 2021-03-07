@@ -279,9 +279,13 @@ client.on('message', message => {
             client.commands.get('zatch').execute(message, args);
         } else if (command.includes('meatball')) {
             client.commands.get('meatball').execute(message, args)
+        }   else if (command.includes('rick')) {
+            client.commands.get('rick').execute(message, args)
+        }   else if (command.includes('-discord')) {
+            client.command.get('Discord Link').execute(message, args)
         }
- 
-    } else { //The command starts with the prefix
+        
+ { //The command starts with the prefix
 
         //now we can run the commands in this file instead of branching off, as there will be less of them
 
