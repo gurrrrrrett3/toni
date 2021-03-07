@@ -282,7 +282,7 @@ client.on('message', message => {
         }  else if (command.includes('rick')) {
             client.commands.get('rick').execute(message, args)
         }  else if (command.includes('-discord')) {
-            client.commands.get('discord link').execute(message, args)
+            client.commands.get('discord').execute(message, args)
         }
     } else {
         
