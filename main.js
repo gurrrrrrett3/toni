@@ -281,7 +281,7 @@ client.on('message', message => {
             client.commands.get('meatball').execute(message, args)
         }  else if (command.includes('rick')) {
             client.commands.get('rick').execute(message, args)
-        }  else if (command.includes('-discord')) {
+        }  else if (command.includes('discord')) {
             client.commands.get('discord').execute(message, args)
         }
     } else {
