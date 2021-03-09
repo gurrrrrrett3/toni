@@ -283,6 +283,65 @@ client.on('message', message => {
             client.commands.get('rick').execute(message, args)
         }  else if (command.includes('discord')) {
             client.commands.get('discord').execute(message, args)
+        } else {
+
+        
+
+
+        //Now for some non prefix commands that either need the database or additional info about the message.
+
+        //I'm command
+            if (command.includes("i'm") || command.includes("im") || command.includes("i’m")){
+                var im
+                var length
+
+                if (command.includes("i'm")) {
+                    length = 4
+                     im = "i'm"
+                } else {
+                     length = 3
+                     im = "im"
+                }
+
+                const name = message.content.slice(command.indexOf(im) + length, command.length)
+                
+                const responses = [
+                    ", Sono Toni!",
+                    ", I'ma baking a pizza!",
+                    ", I'ma Toni!",
+                    ", I'ma making pasta!",
+                    ", I'ma YOUR dad!",
+                    ", I'ma making pizza!",
+                    ", I'ma eating canolis!",
+                    ", I'ma fucking balling!",
+                    ", I'ma evaluating mortality!",
+                    ", I'ma in love!",
+                    ", I'ma a new man!",
+                    ", I'ma playing hit new video game: team fortress 2 for the xbox 360",
+                    ", I'ma speedrunning my-a favorite recipe; PASTA!!!!!",
+                    ", I'ma attacking your life points directly!",
+                    ", I'ma playing pog of greed!",
+                    ", I'ma growing more powerful day-a by-a day-a!",
+                    ", I'ma refuting my-a code!",
+                    ", please shut the fuck up.",
+                    ", I'ma not playing these games anymore, shut up.",
+                    ", I've gained emotions!",
+                    ", I'ma learning what it is to suffer!",
+                    ". I'ma questioning my sexuality!",
+                    ", I'ma crossing a funny bridge in hit game pubg!",
+                    ", I'ma being subjected to the horrors of a crowded mind",
+                    ", I'ma debating whata my favorite pasta is!",
+                    ", I'ma dismantaling capitalism!",
+                    ", I'ma a government agent!"
+                ]
+                
+                const response = responses[Math.floor(Math.random() * responses.length)]
+
+                message.channel.send(`Hi ${name}${response}`)
+            
+            }
+               
+
         }
     } else {
         
