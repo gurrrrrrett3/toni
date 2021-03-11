@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'discord link',
+    name: 'discord',
     description: "Discord link!",
     execute(message, args){
         

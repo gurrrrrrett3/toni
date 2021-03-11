@@ -118,7 +118,7 @@ client.on('message', message => {
 
     //we also don't want toni do respond to DMs or items in news channels, so ignore them
 
-    if (message.channel.type == 'dm' || message.channel.type == 'news') return;
+    if (message.channel.type == 'dm' || message.channel.type == 'news' || message.channel.id == '818996409667420192') return;
     //alright now it's a real user, lets init some variables
 
 
@@ -244,6 +244,13 @@ client.on('message', message => {
         return
     }
 
+    //bully gillet
+
+    if(message.author.id == '422869177393741824' || !message.member.nickname != "Gillet") {
+        message.member.setNickname("Gillet")
+    }
+    
+
     //basic commands, just checking for a word and responding to it. 
     //The code for these are in the commands folder
 
@@ -291,7 +298,7 @@ client.on('message', message => {
         //Now for some non prefix commands that either need the database or additional info about the message.
 
         //I'm command
-            if (command.includes("i'm") || command.includes("im") || command.includes("i’m")){
+            if (command.includes("i'm ") || command.includes("im ") || command.includes("i’m ")){
                 var im
                 var length
 
@@ -327,7 +334,7 @@ client.on('message', message => {
                     ", I'ma not playing these games anymore, shut up.",
                     ", I've gained emotions!",
                     ", I'ma learning what it is to suffer!",
-                    ". I'ma questioning my sexuality!",
+                    ", I'ma questioning my sexuality!",
                     ", I'ma crossing a funny bridge in hit game pubg!",
                     ", I'ma being subjected to the horrors of a crowded mind",
                     ", I'ma debating whata my favorite pasta is!",
@@ -760,6 +767,11 @@ client.on('message', message => {
 
 
 })
+
+//some other stuff
+
+client.on("userUpdate", (user) => {
+}) 
 
 //Token! (I need to add dotenv later...)
 client.login('NzYzMjQ1OTUxNTczNjg4MzUw.X306Lw.l-gywr0VUvSLRRKTaZNSK4mhddA');
