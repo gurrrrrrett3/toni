@@ -817,6 +817,10 @@ function validate(item) {
 
 }
 
+if(message.author.id == '699857789194862624') {
+    message.reply('Shut up you imbred')
+}
+
 
 function makeThousands(number) {
     if (number > 999) {
