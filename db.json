@@ -1,17 +1,16 @@
-
 {
   "users": [
     {
       "id": "232510731067588608",
       "nickname": "Gucci",
-      "messages": 568,
+      "messages": 583,
       "level": 12,
-      "xp": 257,
-      "last_xp": 1615312414152,
+      "xp": 469,
+      "last_xp": 1616178916858,
       "flair": "Toni has been arrive",
       "money": 2000,
       "last_daily": 1615228147232,
-      "total_xp": 5747
+      "total_xp": 5959
     },
     {
       "id": "555080508376219648",
@@ -37,16 +36,16 @@
     {
       "id": "584828762432995360",
       "nickname": "Scxff",
-      "messages": 428,
+      "messages": 429,
       "level": 6,
-      "xp": 375,
-      "last_xp": 1615143871653,
+      "xp": 395,
+      "last_xp": 1616173815750,
       "flair": "umm stop",
       "money": 750,
       "bank": 0,
       "last_daily": 1615051593566,
       "last_intrest": 0,
-      "total_xp": 2130
+      "total_xp": 2150
     },
     {
       "id": "696818076989259847",
@@ -246,11 +245,11 @@
     {
       "id": "461925021632167949",
       "nickname": "Aspect",
-      "messages": 38,
+      "messages": 41,
       "level": 2,
-      "xp": 146,
-      "total_xp": 511,
-      "last_xp": 1615107296371,
+      "xp": 168,
+      "total_xp": 533,
+      "last_xp": 1616179180938,
       "flair": "This is the default flair! Use -flair to change it!",
       "money": 250,
       "bank": 0,
@@ -407,6 +406,21 @@
       "last_daily": 0,
       "last_intrest": 0,
       "inventory": {}
+    },
+    {
+      "id": "779904676879007744",
+      "nickname": "SeverMgr",
+      "messages": 2,
+      "level": 0,
+      "xp": 44,
+      "total_xp": 44,
+      "last_xp": 1615692572974,
+      "flair": "This is the default flair! Use -flair to change it!",
+      "money": 250,
+      "bank": 0,
+      "last_daily": 0,
+      "last_intrest": 0,
+      "inventory": {}
     }
   ],
   "shop": [],
@@ -416,5 +430,6 @@
       "name": "missingno",
       "price": "0"
     }
-  ]
+  ],
+  "menus": []
 }
