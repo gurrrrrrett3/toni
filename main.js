@@ -14,7 +14,7 @@ The #1 obscure italian Discord bot
 - Programmers: JLaqua7, Shellos03, Amari
 
 */
-//Global toni settings
+
 //Requires
 //Discord js
 const Discord = require('discord.js');
@@ -23,10 +23,6 @@ const client = new Discord.Client();
 //Node File Service
 
 const fs = require('fs');
-
-//CUSTOM REACTION MENU
-
-const menu = require(`./modules/reactionmenu.js`)
 
 //dotenv
 

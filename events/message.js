@@ -18,6 +18,8 @@ module.exports = {
 
         const func = require("../modules/functions")
 
+        const fs = require("fs")
+
         //command handler
 
         client.commands = new Discord.Collection();
