@@ -248,6 +248,8 @@ client.on('message', message => {
 
     if(message.author.id == '422869177393741824' || !message.member.nickname != "Gillet") {
         message.member.setNickname("Gillet")
+    }if(message.author.id == '699857789194862624') {
+        message.reply('Shut up you inbred')
     }
     
 
@@ -817,9 +819,7 @@ function validate(item) {
 
 }
 
-if(message.author.id == '699857789194862624') {
-    message.reply('Shut up you imbred')
-}
+
 
 
 function makeThousands(number) {

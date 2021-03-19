@@ -1,529 +1,88 @@
 {
   "users": [
     {
-      "id": "232510731067588608",
-      "nickname": "Gucci",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 568,
-      "level": 12,
-      "xp": 257,
-      "last_xp": 1615312414152,
-      "flair": "Toni has been arrive",
-      "money": 2000,
-      "last_daily": 1615228147232,
-      "total_xp": 5747
-=======
-      "messages": 490,
-      "level": 11,
-      "xp": 285,
-      "last_xp": 1615389049233,
-      "flair": "Toni has been arrive",
-      "money": 1500,
-      "last_daily": 1615052097241,
-      "total_xp": 5005
->>>>>>> Stashed changes
-=======
-      "messages": 787,
-      "level": 14,
-      "xp": 55,
-      "last_xp": 1615432325394,
-      "flair": "Toni has been arrive",
-      "money": 2000,
-      "last_daily": 1615228147232,
-      "total_xp": 7230
->>>>>>> Stashed changes
-    },
-    {
-      "id": "555080508376219648",
-      "nickname": "JLaqua7",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 240,
-=======
-      "messages": 254,
->>>>>>> Stashed changes
-      "level": 6,
-      "xp": 104,
-      "last_xp": 1615413425473,
-      "money": 2000,
-      "last_daily": 1615152880530,
-<<<<<<< Updated upstream
-      "total_xp": 1779,
-=======
-      "messages": 218,
-      "level": 5,
-      "xp": 192,
-      "last_xp": 1615173517627,
-      "money": 1500,
-      "last_daily": 1615076214396,
-      "total_xp": 1527,
->>>>>>> Stashed changes
-=======
-      "total_xp": 1859,
->>>>>>> Stashed changes
-      "flair": "Toni has been arrive"
+      "id": "699857789194862624",
+      "nickname": "bamma_boy",
+      "messages": 1,
+      "level": 0,
+      "xp": 18,
+      "total_xp": 18,
+      "last_xp": 1615842044280,
+      "flair": "This is the default flair! Use -flair to change it!",
+      "money": 250,
+      "bank": 0,
+      "last_daily": 0,
+      "last_intrest": 0,
+      "inventory": {}
     },
     {
       "id": "763245951573688350",
       "nickname": "Toni",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 489,
-      "level": 10,
-      "xp": 552,
-      "last_xp": 1615312414262,
-      "total_xp": 4577
-=======
-      "messages": 518,
-      "level": 10,
-      "xp": 509,
-      "last_xp": 1615388992372,
-      "total_xp": 4534
->>>>>>> Stashed changes
-=======
-      "messages": 690,
-      "level": 12,
-      "xp": 523,
-      "last_xp": 1615425465745,
-      "total_xp": 6013
->>>>>>> Stashed changes
-    },
-    {
-      "id": "584828762432995360",
-      "nickname": "Scxff",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 428,
-      "level": 6,
-      "xp": 375,
-      "last_xp": 1615143871653,
-=======
-      "messages": 362,
-      "level": 5,
-      "xp": 251,
-      "last_xp": 1615326525147,
->>>>>>> Stashed changes
-=======
-      "messages": 464,
-      "level": 7,
-      "xp": 316,
-      "last_xp": 1615407494100,
->>>>>>> Stashed changes
-      "flair": "umm stop",
-      "money": 750,
-      "bank": 0,
-      "last_daily": 1615051593566,
-      "last_intrest": 0,
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "total_xp": 2130
-=======
-      "total_xp": 1586
->>>>>>> Stashed changes
-=======
-      "total_xp": 2546
->>>>>>> Stashed changes
-    },
-    {
-      "id": "696818076989259847",
-      "nickname": "Willb106",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 116,
-      "level": 4,
-      "xp": 269,
-      "total_xp": 1219,
-      "last_xp": 1615311773204,
-=======
-      "messages": 95,
-      "level": 4,
-      "xp": 3,
-      "total_xp": 953,
-      "last_xp": 1615347901532,
->>>>>>> Stashed changes
-=======
-      "messages": 152,
-      "level": 5,
-      "xp": 322,
-      "total_xp": 1657,
-      "last_xp": 1615423387011,
->>>>>>> Stashed changes
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "422869177393741824",
-      "nickname": "DGM8",
-<<<<<<< Updated upstream
-      "messages": 37,
-      "level": 2,
-      "xp": 18,
-      "total_xp": 383,
-      "last_xp": 1615332524208,
-=======
-      "messages": 42,
-      "level": 2,
-      "xp": 72,
-      "total_xp": 437,
-      "last_xp": 1615432214318,
->>>>>>> Stashed changes
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "804180967874756609",
-      "nickname": "ZackChatel",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 32,
-      "level": 3,
-      "xp": 25,
-      "total_xp": 645,
-      "last_xp": 1615148606099,
-=======
-      "messages": 31,
-      "level": 3,
-      "xp": 30,
-      "total_xp": 650,
-      "last_xp": 1615327478511,
->>>>>>> Stashed changes
-=======
-      "messages": 59,
-      "level": 4,
-      "xp": 139,
-      "total_xp": 1089,
-      "last_xp": 1615413498846,
->>>>>>> Stashed changes
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "780960490670129173",
-      "nickname": "Enderdragon",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 319,
-      "level": 6,
-      "xp": 273,
-      "total_xp": 2028,
-      "last_xp": 1615149130631,
-=======
-      "messages": 213,
-      "level": 4,
-      "xp": 275,
-      "total_xp": 1225,
-      "last_xp": 1615327491331,
->>>>>>> Stashed changes
-=======
-      "messages": 419,
-      "level": 7,
-      "xp": 354,
-      "total_xp": 2584,
-      "last_xp": 1615432199158,
->>>>>>> Stashed changes
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "207663348374831104",
-      "nickname": "shellos33",
-      "messages": 71,
-      "level": 3,
-      "xp": 92,
-      "total_xp": 712,
-      "last_xp": 1615345011116,
-      "flair": "Do you like my hat?",
-      "money": 750,
-      "bank": 0,
-      "last_daily": 1615055140570,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "282859044593598464",
-      "nickname": "ProBot ✨",
       "messages": 20,
       "level": 1,
-      "xp": 129,
-      "total_xp": 294,
-      "last_xp": 1615402563560,
+      "xp": 73,
+      "total_xp": 238,
+      "last_xp": 1616174741390,
       "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
+      "money": 1250,
       "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "601537312664584196",
-      "nickname": "Cinnamon Sugar Rune",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 13,
-      "level": 1,
-      "xp": 41,
-      "total_xp": 206,
-      "last_xp": 1615311848355,
-=======
-      "messages": 9,
-      "level": 0,
-      "xp": 103,
-      "total_xp": 103,
-      "last_xp": 1615327775724,
->>>>>>> Stashed changes
-=======
-      "messages": 15,
-      "level": 1,
-      "xp": 82,
-      "total_xp": 247,
-      "last_xp": 1615425479458,
->>>>>>> Stashed changes
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "363119156939194368",
-      "nickname": "MJ.",
-      "messages": 1,
-      "level": 0,
-      "xp": 23,
-      "total_xp": 23,
-      "last_xp": 1615004285446,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
+      "last_daily": 1616173957401,
       "last_intrest": 0,
       "inventory": {}
     },
     {
       "id": "538969149746184205",
       "nickname": "Demolition562",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 22,
-      "level": 2,
-      "xp": 52,
-      "total_xp": 417,
-      "last_xp": 1615143839931,
-=======
-      "messages": 28,
-      "level": 2,
-      "xp": 27,
-      "total_xp": 392,
-      "last_xp": 1615332464607,
->>>>>>> Stashed changes
-=======
-      "messages": 54,
-      "level": 4,
-      "xp": 40,
-      "total_xp": 990,
-      "last_xp": 1615403450480,
->>>>>>> Stashed changes
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "699857789194862624",
-      "nickname": "bamma_boy",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 42,
-      "level": 2,
-      "xp": 169,
-      "total_xp": 534,
-      "last_xp": 1615101290002,
-=======
-      "messages": 31,
-      "level": 2,
-      "xp": 0,
-      "total_xp": 365,
-      "last_xp": 1615168016075,
->>>>>>> Stashed changes
-=======
-      "messages": 74,
-      "level": 4,
-      "xp": 72,
-      "total_xp": 1022,
-      "last_xp": 1615423656527,
->>>>>>> Stashed changes
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "592069134171504640",
-      "nickname": "Rated",
-      "messages": 31,
-      "level": 1,
-      "xp": 48,
-      "total_xp": 213,
-      "last_xp": 1615081447820,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "394019914157129728",
-      "nickname": "Censor Bot",
-      "messages": 8,
-      "level": 1,
-      "xp": 42,
-      "total_xp": 207,
-      "last_xp": 1615402847903,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "234395307759108106",
-      "nickname": "Groovy",
-      "messages": 178,
-      "level": 9,
-      "xp": 598,
-      "total_xp": 3983,
-      "last_xp": 1615413673094,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "461925021632167949",
-      "nickname": "Aspect",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 38,
-      "level": 2,
-      "xp": 146,
-      "total_xp": 511,
-      "last_xp": 1615107296371,
-=======
-      "messages": 48,
-      "level": 2,
-      "xp": 193,
-      "total_xp": 558,
-      "last_xp": 1615173649520,
->>>>>>> Stashed changes
-=======
-      "messages": 96,
-      "level": 3,
-      "xp": 30,
-      "total_xp": 650,
-      "last_xp": 1615346402929,
->>>>>>> Stashed changes
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "683477342181785716",
-      "nickname": "Mr.Nash",
-      "messages": 2,
-      "level": 0,
-      "xp": 43,
-      "total_xp": 43,
-      "last_xp": 1615319438714,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "531246132769193994",
-      "nickname": "Frostbite",
-      "messages": 3,
-      "level": 0,
-      "xp": 64,
-      "total_xp": 64,
-      "last_xp": 1615168691417,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "197822770443190272",
-      "nickname": "Joshua Needed A Custom Tag",
       "messages": 5,
-      "level": 0,
-      "xp": 39,
-      "total_xp": 39,
-      "last_xp": 1615053817986,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "275813801792634880",
-      "nickname": "Zira",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 3,
       "level": 0,
       "xp": 62,
       "total_xp": 62,
-      "last_xp": 1615092309959,
-=======
+      "last_xp": 1615842275994,
+      "flair": "This is the default flair! Use -flair to change it!",
+      "money": 250,
+      "bank": 0,
+      "last_daily": 0,
+      "last_intrest": 0,
+      "inventory": {}
+    },
+    {
+      "id": "696818076989259847",
+      "nickname": "Willb106",
+      "messages": 3,
+      "level": 0,
+      "xp": 35,
+      "total_xp": 35,
+      "last_xp": 1615842246797,
+      "flair": "This is the default flair! Use -flair to change it!",
+      "money": 250,
+      "bank": 0,
+      "last_daily": 0,
+      "last_intrest": 0,
+      "inventory": {}
+    },
+    {
+      "id": "282859044593598464",
+      "nickname": "ProBot ✨",
+      "messages": 1,
+      "level": 0,
+      "xp": 19,
+      "total_xp": 19,
+      "last_xp": 1615842148573,
+      "flair": "This is the default flair! Use -flair to change it!",
+      "money": 250,
+      "bank": 0,
+      "last_daily": 0,
+      "last_intrest": 0,
+      "inventory": {}
+    },
+    {
+      "id": "779904676879007744",
+      "nickname": "SeverMgr",
       "messages": 2,
       "level": 0,
-      "xp": 49,
-      "total_xp": 49,
-      "last_xp": 1615326558344,
->>>>>>> Stashed changes
-=======
-      "messages": 4,
-      "level": 0,
-      "xp": 78,
-      "total_xp": 78,
-      "last_xp": 1615413656851,
->>>>>>> Stashed changes
+      "xp": 46,
+      "total_xp": 46,
+      "last_xp": 1615842427458,
       "flair": "This is the default flair! Use -flair to change it!",
       "money": 250,
       "bank": 0,
@@ -532,111 +91,13 @@
       "inventory": {}
     },
     {
-      "id": "313335010751021056",
-      "nickname": "bepsi",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "messages": 10,
-=======
-      "messages": 14,
->>>>>>> Stashed changes
-      "level": 1,
-      "xp": 159,
-      "total_xp": 324,
-      "last_xp": 1615425486110,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "429656936435286016",
-      "nickname": "RinBot",
-      "messages": 184,
-      "level": 3,
-      "xp": 107,
-      "total_xp": 727,
-      "last_xp": 1615413656926,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "814654094219280454",
-      "nickname": "SonicFox",
-      "messages": 1,
-      "level": 0,
-      "xp": 19,
-      "total_xp": 19,
-      "last_xp": 1615132484115,
-=======
-      "messages": 6,
-      "level": 0,
-      "xp": 88,
-      "total_xp": 88,
-      "last_xp": 1615160482012,
->>>>>>> Stashed changes
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-<<<<<<< Updated upstream
-      "id": "797925488780771328",
-      "nickname": "Ruban",
-      "messages": 4,
-      "level": 0,
-<<<<<<< Updated upstream
-      "xp": 65,
-      "total_xp": 65,
-      "last_xp": 1615140264714,
-=======
-      "id": "813206882667069460",
-      "nickname": "starburst",
-      "messages": 1,
-      "level": 0,
-      "xp": 19,
-      "total_xp": 19,
-      "last_xp": 1615172015158,
->>>>>>> Stashed changes
-=======
-      "xp": 89,
-      "total_xp": 89,
-      "last_xp": 1615415942251,
->>>>>>> Stashed changes
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-<<<<<<< Updated upstream
       "id": "544600355489579018",
       "nickname": "SoooHornet/TTV",
       "messages": 1,
       "level": 0,
       "xp": 17,
       "total_xp": 17,
-      "last_xp": 1615139754692,
-=======
-      "id": "643931333881626625",
-      "nickname": "Pendeja",
-      "messages": 1,
-      "level": 0,
-      "xp": 18,
-      "total_xp": 18,
-      "last_xp": 1615175193053,
->>>>>>> Stashed changes
+      "last_xp": 1615842368292,
       "flair": "This is the default flair! Use -flair to change it!",
       "money": 250,
       "bank": 0,
@@ -645,67 +106,13 @@
       "inventory": {}
     },
     {
-<<<<<<< Updated upstream
-      "id": "724610556836708363",
-      "nickname": "PeaceKeeper Arts",
-      "messages": 1,
-      "level": 0,
-      "xp": 17,
-      "total_xp": 17,
-      "last_xp": 1615228435197,
-=======
-      "id": "429656936435286016",
-      "nickname": "RinBot",
-      "messages": 82,
-      "level": 1,
-      "xp": 93,
-      "total_xp": 258,
-      "last_xp": 1615326883730,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "525136672778879001",
-      "nickname": "adamd",
-      "messages": 2,
-      "level": 0,
-      "xp": 42,
-      "total_xp": 42,
-      "last_xp": 1615337576514,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "604839502124679190",
-      "nickname": "strxtto",
-      "messages": 1,
-      "level": 0,
-      "xp": 16,
-      "total_xp": 16,
-      "last_xp": 1615332121794,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "795422660426858527",
-      "nickname": "miguelangel",
+      "id": "722599975946551346",
+      "nickname": "ThePbGames",
       "messages": 1,
       "level": 0,
       "xp": 22,
       "total_xp": 22,
-      "last_xp": 1615337756775,
+      "last_xp": 1615842392202,
       "flair": "This is the default flair! Use -flair to change it!",
       "money": 250,
       "bank": 0,
@@ -714,89 +121,13 @@
       "inventory": {}
     },
     {
-      "id": "779904676879007744",
-      "nickname": "SeverMgr",
-      "messages": 50,
-      "level": 1,
-      "xp": 23,
-      "total_xp": 188,
-      "last_xp": 1615388992202,
->>>>>>> Stashed changes
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "779904676879007744",
-      "nickname": "SeverMgr",
-      "messages": 844,
-      "level": 10,
-      "xp": 597,
-      "total_xp": 4622,
-      "last_xp": 1615432444859,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "247180017438687233",
-      "nickname": "Red Rave",
-      "messages": 2,
-      "level": 0,
-      "xp": 22,
-      "total_xp": 22,
-      "last_xp": 1615347691802,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "813206882667069460",
-      "nickname": "starburst",
-      "messages": 1,
-      "level": 0,
-      "xp": 17,
-      "total_xp": 17,
-      "last_xp": 1615348663655,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "559038165617213440",
-      "nickname": "JackStar",
-      "messages": 1,
-      "level": 0,
-      "xp": 22,
-      "total_xp": 22,
-      "last_xp": 1615407566373,
-      "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
-      "bank": 0,
-      "last_daily": 0,
-      "last_intrest": 0,
-      "inventory": {}
-    },
-    {
-      "id": "525136672778879001",
-      "nickname": "adamd",
+      "id": "584828762432995360",
+      "nickname": "Lost",
       "messages": 3,
       "level": 0,
-      "xp": 41,
-      "total_xp": 41,
-      "last_xp": 1615426136926,
+      "xp": 20,
+      "total_xp": 20,
+      "last_xp": 1615842443962,
       "flair": "This is the default flair! Use -flair to change it!",
       "money": 250,
       "bank": 0,
@@ -805,28 +136,28 @@
       "inventory": {}
     },
     {
-      "id": "645376131377135676",
-      "nickname": "𝕘𝕖𝕣𝕞 𝕛𝕣 ¯\\_(ツ)_/¯",
-      "messages": 4,
+      "id": "555080508376219648",
+      "nickname": "JLaqua7",
+      "messages": 15,
       "level": 0,
-      "xp": 60,
-      "total_xp": 60,
-      "last_xp": 1615416246341,
+      "xp": 86,
+      "total_xp": 86,
+      "last_xp": 1616174132097,
       "flair": "This is the default flair! Use -flair to change it!",
-      "money": 250,
+      "money": 750,
       "bank": 0,
-      "last_daily": 0,
+      "last_daily": 1616173973331,
       "last_intrest": 0,
       "inventory": {}
     },
     {
-      "id": "710633625489637439",
-      "nickname": "💜Gabriella  Fraser💎",
-      "messages": 1,
+      "id": "232510731067588608",
+      "nickname": "Gucci Garrett",
+      "messages": 8,
       "level": 0,
-      "xp": 23,
-      "total_xp": 23,
-      "last_xp": 1615414187568,
+      "xp": 94,
+      "total_xp": 94,
+      "last_xp": 1616174741246,
       "flair": "This is the default flair! Use -flair to change it!",
       "money": 250,
       "bank": 0,
@@ -836,11 +167,5 @@
     }
   ],
   "shop": [],
-  "items": [
-    {
-      "id": 0,
-      "name": "missingno",
-      "price": "0"
-    }
-  ]
+  "items": []
 }
