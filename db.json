@@ -3,14 +3,14 @@
     {
       "id": "232510731067588608",
       "nickname": "Gucci",
-      "messages": 583,
+      "messages": 635,
       "level": 12,
-      "xp": 469,
-      "last_xp": 1616178916858,
-      "flair": "Toni has been arrive",
-      "money": 2000,
-      "last_daily": 1615228147232,
-      "total_xp": 5959
+      "xp": 745,
+      "last_xp": 1616629878921,
+      "flair": "Future World Record Holder",
+      "money": 2500,
+      "last_daily": 1616629011153,
+      "total_xp": 6235
     },
     {
       "id": "555080508376219648",
@@ -27,11 +27,11 @@
     {
       "id": "763245951573688350",
       "nickname": "Toni",
-      "messages": 489,
-      "level": 10,
-      "xp": 552,
-      "last_xp": 1615312414262,
-      "total_xp": 4577
+      "messages": 518,
+      "level": 11,
+      "xp": 91,
+      "last_xp": 1616630002219,
+      "total_xp": 4811
     },
     {
       "id": "584828762432995360",
@@ -404,6 +404,21 @@
       "money": 250,
       "bank": 0,
       "last_daily": 0,
+      "last_intrest": 0,
+      "inventory": {}
+    },
+    {
+      "id": "325041500037578752",
+      "nickname": "┴҉ɥ̶́ɐ̶͞͠ʇ̕͡͝𝓸̡̧͜𝓾̶͘ǝ̶̕פ̨͘𝓷̸̛͘ʎ",
+      "messages": 37,
+      "level": 1,
+      "xp": 47,
+      "total_xp": 212,
+      "last_xp": 1616630002082,
+      "flair": "ɔ̴̀̕o̵͋̚ʍ̶͂͛-̸̫̔ɐ̴̽͘ɹ̶͊̕ʇ̸̊̓",
+      "money": 750,
+      "bank": 0,
+      "last_daily": 1616629752849,
       "last_intrest": 0,
       "inventory": {}
     }

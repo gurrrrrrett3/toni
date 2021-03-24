@@ -20,13 +20,21 @@ module.exports = {
 
         const fs = require("fs")
 
+
+        //globals
+
+        const ver = global.ver
+        const admins = global.admins
+        const daily = global.daily
+        const prefix = global.prefix
+
         //command handler
 
         client.commands = new Discord.Collection();
 
         const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
         for (const file of commandFiles) {
-            const command = require(`./commands/${file}`);
+            const command = require(`../commands/${file}`);
 
             client.commands.set(command.name, command);
         }
@@ -160,7 +168,7 @@ module.exports = {
                 last_daily: Date.now()
             }).write()
 
-            message.channel.send(func.embed("Success!", `Your balance is now: \`$${func.validate(userdata.money)}\`!`, '#00FF00'))
+            message.channel.send(func.embed("Success!", `Your balance is now: \`$${func.validate(userdata.money)}\`!`, '#00FF00', client))
         }
 
         //log toni's own messages, to make sure we are getting the responses we want
@@ -558,7 +566,7 @@ module.exports = {
                         last_daily: Date.now()
                     }).write()
 
-                    message.channel.send(func.embed("Success!", `Your balance is now: \`$${func.validate(userdata.money)}\`!`, '#00FF00'))
+                    message.channel.send(func.embed("Success!", `Your balance is now: \`$${func.validate(userdata.money)}\`!`, '#00FF00',client))
 
                     message.delete({
                         reason: "Message deleted by Toni."
@@ -570,7 +578,7 @@ module.exports = {
                     //they can run the command again.
 
                     const time = func.parseTime(72000000 - (Date.now() - func.validate(userdata.last_daily)))
-                    message.channel.send(func.embed("Not Yet!", `You still have ${time[0]} hours, ${time[1]} minutes, and ${time[2]} seconds until you can claim your Daily!`, '#FFA000'))
+                    message.channel.send(func.embed("Not Yet!", `You still have ${time[0]} hours, ${time[1]} minutes, and ${time[2]} seconds until you can claim your Daily!`, '#FFA000', client))
                     message.delete({
                         reason: "Message deleted by Toni."
                     })
@@ -684,7 +692,7 @@ module.exports = {
                 var items = db.get('items')
 
                 if (!args[2]) {
-                    message.channel.send(func.embed("Error", "Missing arguements", "#FF0000"))
+                    message.channel.send(func.embed("Error", "Missing arguements", "#FF0000", client))
                 } else {
                     const itemID = _.size(items.value())
                     const itemName = args[1].replace('_', ' ')
@@ -694,7 +702,7 @@ module.exports = {
                         price: args[2]
                     }).write()
 
-                    message.channel.send(func.embed("Created Item!", `Name: ${itemName}\nPrice: $${args[2]}\nID: ${itemID}`))
+                    message.channel.send(func.embed("Created Item!", `Name: ${itemName}\nPrice: $${args[2]}\nID: ${itemID}`, client))
                 }
 
 
