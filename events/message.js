@@ -676,7 +676,7 @@ module.exports = {
 
                     luni.tools.creepify.options.maxHeight = 2
 
-                    const start = user.nickname
+                    const start = user.displayName
                     message.channel.send(`\`\`\`Cursing ${start}... \`\`\``)
                     var cursing = luni.tools.creepify.encode(start)
                     message.channel.send(cursing)
