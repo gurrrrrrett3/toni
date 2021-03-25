@@ -1,6 +1,12 @@
 module.exports = {
     name: 'message',
     once: false,
+    /**
+     * 
+     * @param {Discord.Message} message 
+     * @param {Discord.Client} client 
+     * @returns void
+     */
     execute(message, client) {
 
         //requires
@@ -19,6 +25,8 @@ module.exports = {
         const func = require("../modules/functions")
 
         const fs = require("fs")
+
+        const luni = require("lunicode")
 
 
         //globals
@@ -657,6 +665,37 @@ module.exports = {
                     reason: "Message deleted by Toni."
                 })
             }
+
+            //cursed command
+
+            if (args[0] == 'curse') {
+                if (message.mentions.members.size > 0) {
+                    const user = message.mentions.members.first()
+
+                    console.log(user)
+
+                    luni.tools.creepify.options.maxHeight = 2
+
+                    const start = user.nickname
+                    message.channel.send(`\`\`\`Cursing ${start}... \`\`\``)
+                    var cursing = luni.tools.creepify.encode(start)
+                    message.channel.send(cursing)
+                    
+                    if (cursing.length > 32) {
+                        message.channel.send(`\`\`\`Sorry, your username is too long to curse. Here is what it would have looked like! ${cursing} \`\`\``)
+                    } else {
+                    
+                    message.channel.send(`\`\`\`Done! New username: ${cursing} \`\`\``)
+                    user.setNickname(cursing)
+
+                    }
+
+                    
+                } else {
+                    message.channel.send("You need to mention a user to curse them!")
+                }
+            }
+
 
             //--------------//
             //* K COMMAND *//  DISABLED
