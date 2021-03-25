@@ -3,14 +3,14 @@
     {
       "id": "232510731067588608",
       "nickname": "Gucci",
-      "messages": 635,
-      "level": 12,
-      "xp": 745,
-      "last_xp": 1616629878921,
+      "messages": 644,
+      "level": 13,
+      "xp": 34,
+      "last_xp": 1616630641599,
       "flair": "Future World Record Holder",
       "money": 2500,
       "last_daily": 1616629011153,
-      "total_xp": 6235
+      "total_xp": 6349
     },
     {
       "id": "555080508376219648",
@@ -27,11 +27,11 @@
     {
       "id": "763245951573688350",
       "nickname": "Toni",
-      "messages": 518,
+      "messages": 534,
       "level": 11,
-      "xp": 91,
-      "last_xp": 1616630002219,
-      "total_xp": 4811
+      "xp": 171,
+      "last_xp": 1616630648827,
+      "total_xp": 4891
     },
     {
       "id": "584828762432995360",
@@ -395,11 +395,11 @@
     {
       "id": "779904676879007744",
       "nickname": "SeverMgr",
-      "messages": 2,
+      "messages": 6,
       "level": 0,
-      "xp": 44,
-      "total_xp": 44,
-      "last_xp": 1615692572974,
+      "xp": 80,
+      "total_xp": 80,
+      "last_xp": 1616630543819,
       "flair": "This is the default flair! Use -flair to change it!",
       "money": 250,
       "bank": 0,
@@ -410,15 +410,30 @@
     {
       "id": "325041500037578752",
       "nickname": "┴҉ɥ̶́ɐ̶͞͠ʇ̕͡͝𝓸̡̧͜𝓾̶͘ǝ̶̕פ̨͘𝓷̸̛͘ʎ",
-      "messages": 37,
+      "messages": 60,
       "level": 1,
-      "xp": 47,
-      "total_xp": 212,
-      "last_xp": 1616630002082,
+      "xp": 149,
+      "total_xp": 314,
+      "last_xp": 1616630587806,
       "flair": "ɔ̴̀̕o̵͋̚ʍ̶͂͛-̸̫̔ɐ̴̽͘ɹ̶͊̕ʇ̸̊̓",
       "money": 750,
       "bank": 0,
       "last_daily": 1616629752849,
+      "last_intrest": 0,
+      "inventory": {}
+    },
+    {
+      "id": "689867502045495353",
+      "nickname": "Skier50",
+      "messages": 4,
+      "level": 0,
+      "xp": 36,
+      "total_xp": 36,
+      "last_xp": 1616630665281,
+      "flair": "syno is a noob",
+      "money": 250,
+      "bank": 0,
+      "last_daily": 0,
       "last_intrest": 0,
       "inventory": {}
     }

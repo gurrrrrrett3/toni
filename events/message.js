@@ -91,6 +91,32 @@ module.exports = {
 
         }
 
+        //now check for mentions
+        if (message.mentions.size > 0) {
+            message.mentions.forEach(element => {
+                if (users.find({id: element.id}).value() === undefined) {
+                //user doesen't exist in the database, create a new entry and update variables
+            const userDefault = {
+                id: element.id,
+                nickname: element.user.username,
+                messages: 0,
+                level: 0,
+                xp: 0,
+                total_xp: 0,
+                last_xp: 0,
+                flair: 'This is the default flair! Use -flair to change it!',
+                money: 250,
+                bank: 0,
+                last_daily: 0,
+                last_intrest: 0,
+                inventory: {}
+            }
+            users.push(userDefault).write(); //set database with new entry
+            console.log(`${element.user.username} didn't exist in the database, created an entry`)
+                }
+            });
+        } 
+
         //Now we are sure the user is in the database, and we can update variables without errors
 
         const currentMessages = func.validate(userdata.messages + 1)
