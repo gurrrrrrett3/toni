@@ -11,6 +11,6 @@ module.exports = {
         ]
         
         const response = (responses[Math.floor(Math.random() * responses.length)])
-        message.channel.send(`${response} https://discord.gg/XK5rjrEn`);
+        message.channel.send(`${response} https://discord.gg/3ej2sPg`);
     }
 }
