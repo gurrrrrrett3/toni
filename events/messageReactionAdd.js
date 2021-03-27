@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'messageReactionAdd',
-	once: true,
+	once: false,
 	execute(reaction, user, client) {
 		
 		const menu = require("../modules/reactionmenu")

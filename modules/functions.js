@@ -1,8 +1,12 @@
 //functions!
 
+
 module.exports = {
     
-    embed(title, description, color) {
+    embed(title, description, color, client) {
+
+        const Discord = require("discord.js")
+        const globaldata = require("../globaldata.json")
         const embed = new Discord.MessageEmbed()
             .setTitle(title)
             .setDescription(description)

@@ -163,7 +163,7 @@ module.exports = {
         "Tarhana"
      ]
         
-        const result = pasta[Math.floor(Math.random() * 166)]    
+        const result = pasta[Math.floor(Math.random() * pasta.length)]    
         
         
         message.channel.send(result);

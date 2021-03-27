@@ -1,6 +1,12 @@
 module.exports = {
     name: 'message',
     once: false,
+    /**
+     * 
+     * @param {Discord.Message} message 
+     * @param {Discord.Client} client 
+     * @returns void
+     */
     execute(message, client) {
 
         //requires
@@ -20,13 +26,23 @@ module.exports = {
 
         const fs = require("fs")
 
+        const luni = require("lunicode")
+
+
+        //globals
+
+        const ver = global.ver
+        const admins = global.admins
+        const daily = global.daily
+        const prefix = global.prefix
+
         //command handler
 
         client.commands = new Discord.Collection();
 
         const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
         for (const file of commandFiles) {
-            const command = require(`./commands/${file}`);
+            const command = require(`../commands/${file}`);
 
             client.commands.set(command.name, command);
         }
@@ -82,6 +98,32 @@ module.exports = {
             console.log(`${message.member.user.username} didn't exist in the database, created an entry`)
 
         }
+
+        //now check for mentions
+        if (message.mentions.size > 0) {
+            message.mentions.forEach(element => {
+                if (users.find({id: element.id}).value() === undefined) {
+                //user doesen't exist in the database, create a new entry and update variables
+            const userDefault = {
+                id: element.id,
+                nickname: element.user.username,
+                messages: 0,
+                level: 0,
+                xp: 0,
+                total_xp: 0,
+                last_xp: 0,
+                flair: 'This is the default flair! Use -flair to change it!',
+                money: 250,
+                bank: 0,
+                last_daily: 0,
+                last_intrest: 0,
+                inventory: {}
+            }
+            users.push(userDefault).write(); //set database with new entry
+            console.log(`${element.user.username} didn't exist in the database, created an entry`)
+                }
+            });
+        } 
 
         //Now we are sure the user is in the database, and we can update variables without errors
 
@@ -160,7 +202,7 @@ module.exports = {
                 last_daily: Date.now()
             }).write()
 
-            message.channel.send(func.embed("Success!", `Your balance is now: \`$${func.validate(userdata.money)}\`!`, '#00FF00'))
+            message.channel.send(func.embed("Success!", `Your balance is now: \`$${func.validate(userdata.money)}\`!`, '#00FF00', client))
         }
 
         //log toni's own messages, to make sure we are getting the responses we want
@@ -558,7 +600,7 @@ module.exports = {
                         last_daily: Date.now()
                     }).write()
 
-                    message.channel.send(func.embed("Success!", `Your balance is now: \`$${func.validate(userdata.money)}\`!`, '#00FF00'))
+                    message.channel.send(func.embed("Success!", `Your balance is now: \`$${func.validate(userdata.money)}\`!`, '#00FF00',client))
 
                     message.delete({
                         reason: "Message deleted by Toni."
@@ -570,7 +612,7 @@ module.exports = {
                     //they can run the command again.
 
                     const time = func.parseTime(72000000 - (Date.now() - func.validate(userdata.last_daily)))
-                    message.channel.send(func.embed("Not Yet!", `You still have ${time[0]} hours, ${time[1]} minutes, and ${time[2]} seconds until you can claim your Daily!`, '#FFA000'))
+                    message.channel.send(func.embed("Not Yet!", `You still have ${time[0]} hours, ${time[1]} minutes, and ${time[2]} seconds until you can claim your Daily!`, '#FFA000', client))
                     message.delete({
                         reason: "Message deleted by Toni."
                     })
@@ -623,6 +665,37 @@ module.exports = {
                     reason: "Message deleted by Toni."
                 })
             }
+
+            //cursed command
+
+            if (args[0] == 'curse') {
+                if (message.mentions.members.size > 0) {
+                    const user = message.mentions.members.first()
+
+                    console.log(user)
+
+                    luni.tools.creepify.options.maxHeight = 2
+
+                    const start = user.displayName
+                    message.channel.send(`\`\`\`Cursing ${start}... \`\`\``)
+                    var cursing = luni.tools.creepify.encode(start)
+                    message.channel.send(cursing)
+                    
+                    if (cursing.length > 32) {
+                        message.channel.send(`\`\`\`Sorry, your username is too long to curse. Here is what it would have looked like! ${cursing} \`\`\``)
+                    } else {
+                    
+                    message.channel.send(`\`\`\`Done! New username: ${cursing} \`\`\``)
+                    user.setNickname(cursing)
+
+                    }
+
+                    
+                } else {
+                    message.channel.send("You need to mention a user to curse them!")
+                }
+            }
+
 
             //--------------//
             //* K COMMAND *//  DISABLED
@@ -684,7 +757,7 @@ module.exports = {
                 var items = db.get('items')
 
                 if (!args[2]) {
-                    message.channel.send(func.embed("Error", "Missing arguements", "#FF0000"))
+                    message.channel.send(func.embed("Error", "Missing arguements", "#FF0000", client))
                 } else {
                     const itemID = _.size(items.value())
                     const itemName = args[1].replace('_', ' ')
@@ -694,7 +767,7 @@ module.exports = {
                         price: args[2]
                     }).write()
 
-                    message.channel.send(func.embed("Created Item!", `Name: ${itemName}\nPrice: $${args[2]}\nID: ${itemID}`))
+                    message.channel.send(func.embed("Created Item!", `Name: ${itemName}\nPrice: $${args[2]}\nID: ${itemID}`, client))
                 }
 
 
