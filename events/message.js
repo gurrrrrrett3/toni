@@ -225,6 +225,8 @@ module.exports = {
 
             if (command.includes('toni')) {
                 message.channel.send("Ciao, sono Toni!")
+            } else if (command.includes('ping')) {
+                client.commands.get('ping').execute(message, args)
             } else if (command.includes('pasta')) {
                 client.commands.get('pasta').execute(message, args)
             } else if (command.includes('roll')) {
